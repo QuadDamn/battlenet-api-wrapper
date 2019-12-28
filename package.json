@@ -1,0 +1,21 @@
+{
+  "name": "battlenet-api-wrapper",
+  "version": "1.0.0",
+  "description": "A Node.js wrapper for the Battle.net Community and Data APIs (supports WoW, WoW Classic, SC2, D3, and Hearthstone).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shane Jeffery",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^13.1.1",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "supertest": "^4.0.2",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
