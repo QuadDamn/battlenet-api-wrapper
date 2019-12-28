@@ -56,23 +56,32 @@ class BattlenetWrapper {
                 baseURL: this.originObject[this.origin].hostname
             });
 
-            this.axios.defaults.headers.common['Authorization'] = this.oauthToken;
+            this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
         });
     }
 
     async _getToken() {
-        this.oauthToken = await this.axios.get(`https://${this.origin}.battle.net/oauth/token`, {
-            auth: {
-                username: this.clientId,
-                password: this.clientSecret,
-            },
-            params: {
-                grant_type: 'client_credentials',
-            },
-        });
+        try {
+            const response = await axios.get(`https://${this.origin}.battle.net/oauth/token`, {
+                auth: {
+                    username: this.clientId,
+                    password: this.clientSecret,
+                },
+                params: {
+                    grant_type: 'client_credentials',
+                },
+            });
+
+            this.oauthToken = response.data.access_token;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Problem getting the OAuth token from the Blizzard API.');
+        }
     }
 
     _formatBattleTag(battleTag: string): string {
         return battleTag.replace('#', '-');
     }
 }
+
+module.exports = BattlenetWrapper;
