@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
-class BattlenetWrapper {
+class BattleNetWrapper {
     constructor(clientId, clientSecret, origin = 'us', locale = 'en_US') {
         this.originObject = {
             us: {
@@ -85,4 +85,4 @@ class BattlenetWrapper {
         return battleTag.replace('#', '-');
     }
 }
-module.exports = BattlenetWrapper;
+module.exports = BattleNetWrapper;

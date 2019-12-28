@@ -1,6 +1,6 @@
 import axios, {AxiosInstance} from "axios";
 
-class BattlenetWrapper {
+class BattleNetWrapper {
     private readonly clientId: string;
     private readonly clientSecret: string;
     private readonly origin: string;
@@ -84,4 +84,4 @@ class BattlenetWrapper {
     }
 }
 
-module.exports = BattlenetWrapper;
+module.exports = BattleNetWrapper;

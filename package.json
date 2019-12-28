@@ -2,12 +2,12 @@
   "name": "battlenet-api-wrapper",
   "version": "1.0.0",
   "description": "A Node.js wrapper for the Battle.net Community and Data APIs (supports WoW, WoW Classic, SC2, D3, and Hearthstone).",
-  "main": "./dist/battlenetWrapper",
+  "main": "./dist/battleNetWrapper",
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc --build tsconfig.json",
     "watch:build": "tsc --watch",
-    "watch:server": "nodemon './dist/battlenetWrapper.js' --watch './dist'",
+    "watch:server": "nodemon './dist/battleNetWrapper.js' --watch './dist'",
     "start": "npm-run-all clean build --parallel watch:build watch:server --print-label"
   },
   "author": "Shane Jeffery",
