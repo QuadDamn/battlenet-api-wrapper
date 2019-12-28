@@ -1,13 +1,10 @@
-import {AxiosInstance} from "axios";
-
-const axios = require('axios');
+import axios, {AxiosInstance} from "axios";
 
 class BattlenetWrapper {
-    private clientId: string;
-    private clientSecret: string;
-    private origin: string;
-    private originData: Object;
-    private locale: string;
+    private readonly clientId: string;
+    private readonly clientSecret: string;
+    private readonly origin: string;
+    private readonly locale: string;
     private oauthToken: string;
     private axios: AxiosInstance;
     private originObject: Object = {
@@ -52,18 +49,19 @@ class BattlenetWrapper {
         this.origin = origin;
         this.locale = locale;
 
-        this.originData = this.originObject[this.origin];
-        this._getToken().then((data) => {
-            this.oauthToken = data.token;
-        });
+        // Handles the fetching of a new OAuth token from the Battle.net API
+        // and then creates a reusable instance of axios for all subsequent API requests.
+        this._getToken().then(() => {
+            this.axios = axios.create({
+                baseURL: this.originObject[this.origin].hostname
+            });
 
-        this.axios = axios.create({
-
+            this.axios.defaults.headers.common['Authorization'] = this.oauthToken;
         });
     }
 
     async _getToken() {
-        return await this.axios.get(`https://${this.origin}.battle.net/oauth/token`, {
+        this.oauthToken = await this.axios.get(`https://${this.origin}.battle.net/oauth/token`, {
             auth: {
                 username: this.clientId,
                 password: this.clientSecret,
@@ -77,6 +75,4 @@ class BattlenetWrapper {
     _formatBattleTag(battleTag: string): string {
         return battleTag.replace('#', '-');
     }
-
-
 }
