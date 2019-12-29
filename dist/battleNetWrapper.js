@@ -10,8 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
+const community_1 = require("./d3/community");
 class BattleNetWrapper {
-    constructor(clientId, clientSecret, origin = 'us', locale = 'en_US') {
+    // Unused constructor as we needed the ability to async the initialization
+    // and await all of the underlying promises.
+    constructor() {
         this.originObject = {
             us: {
                 hostname: 'https://us.api.blizzard.com',
@@ -44,23 +47,49 @@ class BattleNetWrapper {
                 locales: ['zh_CN', 'en_GB', 'en_US', 'multi'],
             }
         };
-        if (!clientId)
-            throw new Error('You are missing your Client ID in the passed parameters. This parameter is required.');
-        if (!clientSecret)
-            throw new Error('You are missing your Client Secret in the passed parameters. This parameter is required.');
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.origin = origin;
-        this.locale = locale;
-        // Handles the fetching of a new OAuth token from the Battle.net API
-        // and then creates a reusable instance of axios for all subsequent API requests.
-        this._getToken().then(() => {
+    }
+    init(clientId, clientSecret, origin = 'us', locale = 'en_US') {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!clientId)
+                throw new Error('You are missing your Client ID in the passed parameters. This parameter is required.');
+            if (!clientSecret)
+                throw new Error('You are missing your Client Secret in the passed parameters. This parameter is required.');
+            this.clientId = clientId;
+            this.clientSecret = clientSecret;
+            this.origin = origin;
+            this.locale = locale;
+            // Handles the fetching of a new OAuth token from the Battle.net API
+            // and then creates a reusable instance of axios for all subsequent API requests.
+            yield this._getToken();
             this.axios = axios_1.default.create({
-                baseURL: this.originObject[this.origin].hostname
+                baseURL: this.originObject[this.origin].hostname,
+                params: {
+                    locale: this.locale
+                }
             });
             this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
+            // this.WowCommunity = new WowCommunity(this.axios, this.origin);
+            // this.WowGameData = new WowGameData(this.axios, this.origin);
+            // this.WowProfileData = new WowProfileData(this.axios, this.origin);
+            //
+            // this.WowClassicGameData = new WowClassicGameData(this.axios, this.origin);
+            //
+            // this.HearthstoneCommunity = new HearthstoneCommunity(this.axios, this.origin);
+            // this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin);
+            //
+            // this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
+            // this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
+            this.Diablo3Community = new community_1.default(this.axios, this.locale);
+            // this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
         });
     }
+    /**
+     * Gets a new access token for all of the subsequent API requests.
+     * Every invocation of this class will create a new access token,
+     * so you should never have to worry about the a token ever expiring.
+     *
+     * @private
+     */
     _getToken() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
