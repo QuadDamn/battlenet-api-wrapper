@@ -18,7 +18,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the season index.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the season index.');
         }
     }
 
@@ -28,7 +28,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified season.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the specified season.');
         }
     }
 
@@ -38,7 +38,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified season leaderboard.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the specified season leaderboard.');
         }
     }
 
@@ -48,7 +48,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the era index.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the era index.');
         }
     }
 
@@ -58,7 +58,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified era.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the specified era.');
         }
     }
 
@@ -68,7 +68,7 @@ class Diablo3GameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified era leaderboard.');
+            throw new Error('Diablo 3 Game Data Error :: Error fetching the specified era leaderboard.');
         }
     }
 }

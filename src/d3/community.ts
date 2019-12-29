@@ -23,7 +23,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the act index.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the act index.');
         }
     }
 
@@ -33,7 +33,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified act.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the specified act.');
         }
     }
 
@@ -47,7 +47,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified artisan.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the specified artisan.');
         }
     }
 
@@ -57,7 +57,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified recipe.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified recipe.');
         }
     }
 
@@ -71,7 +71,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified follower.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the specified follower.');
         }
     }
 
@@ -85,7 +85,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified hero class.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified hero class.');
         }
     }
 
@@ -95,7 +95,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified hero class skill.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified hero class skill.');
         }
     }
 
@@ -109,7 +109,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the item type index.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the item type index.');
         }
     }
 
@@ -119,7 +119,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified item type.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the specified item type.');
         }
     }
 
@@ -133,7 +133,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching the specified item.');
+            throw new Error('Diablo 3 Community Error :: Error fetching the specified item.');
         }
     }
 
@@ -148,7 +148,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching profile information.');
+            throw new Error('Diablo 3 Community Error :: Error fetching profile information.');
         }
     }
 
@@ -159,7 +159,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified hero.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified hero.');
         }
     }
 
@@ -170,7 +170,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified hero items.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified hero items.');
         }
     }
 
@@ -181,7 +181,7 @@ class Diablo3Community {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Error fetching specified hero follower items.');
+            throw new Error('Diablo 3 Community Error :: Error fetching specified hero follower items.');
         }
     }
 }

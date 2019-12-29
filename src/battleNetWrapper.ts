@@ -1,6 +1,8 @@
 import axios, {AxiosInstance} from "axios";
 
 import Diablo3Community from './d3/community';
+import Diablo3GameData from './d3/gameData';
+import HearthstoneGameData from './hearthstone/gameData';
 
 class BattleNetWrapper {
 
@@ -21,6 +23,7 @@ class BattleNetWrapper {
     private locale: string;
     private oauthToken: string;
     private axios: AxiosInstance;
+    private defaultAxiosParams: object;
     private originObject: object = {
         us:  {
             hostname: 'https://us.api.blizzard.com',
@@ -67,6 +70,10 @@ class BattleNetWrapper {
         this.origin = origin;
         this.locale = locale;
 
+        this.defaultAxiosParams = {
+            locale: this.locale
+        };
+
         // Handles the fetching of a new OAuth token from the Battle.net API
         // and then creates a reusable instance of axios for all subsequent API requests.
         await this._getToken();
@@ -86,15 +93,13 @@ class BattleNetWrapper {
         //
         // this.WowClassicGameData = new WowClassicGameData(this.axios, this.origin);
         //
-        // this.HearthstoneCommunity = new HearthstoneCommunity(this.axios, this.origin);
-        // this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin);
+        this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin, this.defaultAxiosParams);
         //
         // this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
         // this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
 
         this.Diablo3Community = new Diablo3Community(this.axios, this.locale);
-
-        // this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
+        this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
 
     }
 

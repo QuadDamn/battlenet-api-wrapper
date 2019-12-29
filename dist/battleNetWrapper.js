@@ -11,6 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
 const community_1 = require("./d3/community");
+const gameData_1 = require("./d3/gameData");
+const gameData_2 = require("./hearthstone/gameData");
 class BattleNetWrapper {
     // Unused constructor as we needed the ability to async the initialization
     // and await all of the underlying promises.
@@ -58,6 +60,9 @@ class BattleNetWrapper {
             this.clientSecret = clientSecret;
             this.origin = origin;
             this.locale = locale;
+            this.defaultAxiosParams = {
+                locale: this.locale
+            };
             // Handles the fetching of a new OAuth token from the Battle.net API
             // and then creates a reusable instance of axios for all subsequent API requests.
             yield this._getToken();
@@ -74,13 +79,12 @@ class BattleNetWrapper {
             //
             // this.WowClassicGameData = new WowClassicGameData(this.axios, this.origin);
             //
-            // this.HearthstoneCommunity = new HearthstoneCommunity(this.axios, this.origin);
-            // this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin);
+            this.HearthstoneGameData = new gameData_2.default(this.axios, this.origin, this.defaultAxiosParams);
             //
             // this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
             // this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
             this.Diablo3Community = new community_1.default(this.axios, this.locale);
-            // this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
+            this.Diablo3GameData = new gameData_1.default(this.axios, this.origin);
         });
     }
     /**
