@@ -1,4 +1,5 @@
 "use strict";
+// Diablo 3 Community API documentation: https://develop.battle.net/documentation/diablo-3/community-apis
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
 class Diablo3Community {
     constructor(axiosInstance, locale) {
         this.gameBaseUrlPath = '/d3/data';
@@ -141,27 +143,71 @@ class Diablo3Community {
     /****************************
      * Item API
      ****************************/
-    getItem() {
+    getItem(itemSlugAndId) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.axios.get(`${this.gameBaseUrlPath}/item/${itemSlugAndId}`);
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching the specified item.');
+            }
         });
     }
     /****************************
      * Profile API
      ****************************/
-    getApiAccount() {
+    getApiAccount(account) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const formattedBattleTag = yield utils_1.formatBattleTag(account);
+                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}`);
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching profile information.');
+            }
         });
     }
-    getApiHero() {
+    getApiHero(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const formattedBattleTag = yield utils_1.formatBattleTag(account);
+                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}`);
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching specified hero.');
+            }
         });
     }
-    getApiDetailedHeroItems() {
+    getApiDetailedHeroItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const formattedBattleTag = yield utils_1.formatBattleTag(account);
+                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`);
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching specified hero items.');
+            }
         });
     }
-    getApiDetailedFollowerItems() {
+    getApiDetailedFollowerItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const formattedBattleTag = yield utils_1.formatBattleTag(account);
+                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`);
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching specified hero follower items.');
+            }
         });
     }
 }

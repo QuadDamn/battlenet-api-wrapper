@@ -1,8 +1,9 @@
 // Diablo 3 Community API documentation: https://develop.battle.net/documentation/diablo-3/community-apis
+
 import {AxiosInstance} from "axios";
+import {formatBattleTag} from '../utils';
 
 class Diablo3Community {
-
     private axios: AxiosInstance;
     private readonly locale: string;
     private gameBaseUrlPath: string = '/d3/data';
@@ -126,28 +127,62 @@ class Diablo3Community {
      * Item API
      ****************************/
 
-    async getItem(): Promise<object> {
-
+    async getItem(itemSlugAndId): Promise<object> {
+        try {
+            const response = await this.axios.get(`${this.gameBaseUrlPath}/item/${itemSlugAndId}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error fetching the specified item.');
+        }
     }
 
     /****************************
      * Profile API
      ****************************/
 
-    async getApiAccount(): Promise<object> {
-
+    async getApiAccount(account: string): Promise<object> {
+        try {
+            const formattedBattleTag = await formatBattleTag(account);
+            const response = await this.axios.get(`/d3/profile/${formattedBattleTag}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error fetching profile information.');
+        }
     }
 
-    async getApiHero(): Promise<object> {
-
+    async getApiHero(account: string, heroId: string): Promise<object> {
+        try {
+            const formattedBattleTag = await formatBattleTag(account);
+            const response = await this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error fetching specified hero.');
+        }
     }
 
-    async getApiDetailedHeroItems(): Promise<object> {
-
+    async getApiDetailedHeroItems(account: string, heroId: string): Promise<object> {
+        try {
+            const formattedBattleTag = await formatBattleTag(account);
+            const response = await this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error fetching specified hero items.');
+        }
     }
 
-    async getApiDetailedFollowerItems(): Promise<object> {
-
+    async getApiDetailedFollowerItems(account: string, heroId: string): Promise<object> {
+        try {
+            const formattedBattleTag = await formatBattleTag(account);
+            const response = await this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error fetching specified hero follower items.');
+        }
     }
 }
 

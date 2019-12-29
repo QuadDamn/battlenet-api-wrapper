@@ -124,9 +124,7 @@ class BattleNetWrapper {
         }
     }
 
-    _formatBattleTag(battleTag: string): string {
-        return battleTag.replace('#', '-');
-    }
+
 }
 
 module.exports = BattleNetWrapper;

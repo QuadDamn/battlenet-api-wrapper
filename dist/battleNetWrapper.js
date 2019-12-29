@@ -110,8 +110,5 @@ class BattleNetWrapper {
             }
         });
     }
-    _formatBattleTag(battleTag) {
-        return battleTag.replace('#', '-');
-    }
 }
 module.exports = BattleNetWrapper;
