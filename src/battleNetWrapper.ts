@@ -76,16 +76,17 @@ class BattleNetWrapper {
 
         // Handles the fetching of a new OAuth token from the Battle.net API
         // and then creates a reusable instance of axios for all subsequent API requests.
-        await this._getToken();
+        try {
+            this.axios = axios.create({
+                baseURL: this.originObject[this.origin].hostname,
+                params: this.defaultAxiosParams
+            });
 
-        this.axios = axios.create({
-            baseURL: this.originObject[this.origin].hostname,
-            params: {
-                locale: this.locale
-            }
-        });
-
-        this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
+            await this._getToken();
+            this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
+        } catch (error) {
+            console.log(error);
+        }
 
         // this.WowCommunity = new WowCommunity(this.axios, this.origin);
         // this.WowGameData = new WowGameData(this.axios, this.origin);
@@ -93,10 +94,12 @@ class BattleNetWrapper {
         //
         // this.WowClassicGameData = new WowClassicGameData(this.axios, this.origin);
         //
-        this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin, this.defaultAxiosParams);
+
         //
         // this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
         // this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
+
+        this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin, this.defaultAxiosParams);
 
         this.Diablo3Community = new Diablo3Community(this.axios, this.locale);
         this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
@@ -128,8 +131,6 @@ class BattleNetWrapper {
             throw new Error('Problem getting the OAuth token from the Blizzard API.');
         }
     }
-
-
 }
 
 module.exports = BattleNetWrapper;
