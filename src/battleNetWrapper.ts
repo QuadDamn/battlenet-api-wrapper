@@ -3,6 +3,9 @@ import axios, {AxiosInstance} from "axios";
 import Diablo3Community from './d3/community';
 import Diablo3GameData from './d3/gameData';
 import HearthstoneGameData from './hearthstone/gameData';
+import Starcraft2Community from './sc2/community';
+import Starcraft2GameData from './sc2/gameData';
+import WowClassicGameData from './wowClassic/gameData';
 
 class BattleNetWrapper {
 
@@ -88,16 +91,16 @@ class BattleNetWrapper {
             console.log(error);
         }
 
+        // console.log(this.oauthToken);
+
         // this.WowCommunity = new WowCommunity(this.axios, this.origin);
         // this.WowGameData = new WowGameData(this.axios, this.origin);
         // this.WowProfileData = new WowProfileData(this.axios, this.origin);
         //
-        // this.WowClassicGameData = new WowClassicGameData(this.axios, this.origin);
-        //
+        this.WowClassicGameData = new WowClassicGameData(this.axios, this.defaultAxiosParams, this.origin);
 
-        //
-        // this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
-        // this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
+        this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
+        this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
 
         this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.origin, this.defaultAxiosParams);
 
