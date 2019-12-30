@@ -18,13 +18,18 @@ class Starcraft2GameData {
     }
     getLeagueData(seasonId, queueId, teamType, leagueId) {
         return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`, 'Error fetching the league data.');
+        });
+    }
+    _handleApiCall(apiUrl, errorMessage) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`);
+                const response = yield this.axios.get(apiUrl);
                 return response.data;
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Starcraft 2 Game Data Error :: Error fetching the league data.');
+                throw new Error(`Starcraft 2 Game Data Error :: ${errorMessage}`);
             }
         });
     }

@@ -22,66 +22,31 @@ class Starcraft2Community {
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getStaticProfileData(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/static/profile/${regionId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching static profile data for the specified region.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/static/profile/${regionId}`, 'Error fetching static profile data for the specified region.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getMetadata(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/static/profile/${regionId}/${realmId}/${profileId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching profile data for the specified region.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/static/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching profile data for the specified region.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getProfile(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified profile data.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching specified profile data.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLadderSummary(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/summary`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified ladder summary.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/summary`, 'Error fetching specified ladder summary.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLadder(regionId, realmId, profileId, ladderId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/${ladderId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified ladder.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/${ladderId}`, 'Error fetching specified ladder.');
         });
     }
     /****************************
@@ -90,27 +55,13 @@ class Starcraft2Community {
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getGrandmasterLeaderboard(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/ladder/grandmaster/${regionId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching static profile data for the specified region.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/ladder/grandmaster/${regionId}`, 'Error fetching static profile data for the specified region.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getSeason(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/ladder/season/${regionId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching static profile data for the specified region.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/ladder/season/${regionId}`, 'Error fetching static profile data for the specified region.');
         });
     }
     /****************************
@@ -118,14 +69,7 @@ class Starcraft2Community {
      ****************************/
     getPlayer(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/player/${accountId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching metadata for player account.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/player/${accountId}`, 'Error fetching metadata for player account.');
         });
     }
     /****************************
@@ -134,65 +78,42 @@ class Starcraft2Community {
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLegacyProfile(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified legacy profile data.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching specified legacy profile data.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLegacyProfileLadders(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/ladders`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified legacy profile ladder data.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/ladders`, 'Error fetching specified legacy profile ladder data.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLegacyProfileMatches(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/matches`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified legacy profile match data.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/matches`, 'Error fetching specified legacy profile match data.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLegacyAchievements(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/legacy/data/achievements/${regionId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified legacy achievement data.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/data/achievements/${regionId}`, 'Error fetching specified legacy achievement data.');
         });
     }
     // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
     getLegacyRewards(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/data/rewards/${regionId}`, 'Error fetching specified legacy rewards data.');
+        });
+    }
+    _handleApiCall(apiUrl, errorMessage) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/legacy/data/rewards/${regionId}`);
+                const response = yield this.axios.get(apiUrl);
                 return response.data;
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Starcraft 2 Community Error :: Error fetching specified legacy rewards data.');
+                throw new Error(`Starcraft 2 Community Error :: ${errorMessage}`);
             }
         });
     }

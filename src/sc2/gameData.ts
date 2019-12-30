@@ -3,9 +3,9 @@
 import {AxiosInstance} from "axios";
 
 class Starcraft2GameData {
-    private axios: AxiosInstance;
+    private readonly axios: AxiosInstance;
     private readonly locale: string;
-    private gameBaseUrlPath: string = '/data/sc2';
+    private readonly gameBaseUrlPath: string = '/data/sc2';
 
     constructor(axiosInstance: AxiosInstance, locale: string) {
         this.axios = axiosInstance;
@@ -13,12 +13,19 @@ class Starcraft2GameData {
     }
 
     async getLeagueData(seasonId: string, queueId: string, teamType: string, leagueId: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`,
+            'Error fetching the league data.'
+        );
+    }
+
+    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
-            const response = await this.axios.get(`${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`);
+            const response = await this.axios.get(apiUrl);
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Starcraft 2 Game Data Error :: Error fetching the league data.');
+            throw new Error(`Starcraft 2 Game Data Error :: ${errorMessage}`);
         }
     }
 }
