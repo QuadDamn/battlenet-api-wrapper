@@ -21,51 +21,51 @@ class WowClassicGameData {
      ****************************/
 
     async getCreatureFamiliesIndex(): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/index`,
-            'WoW Classic Game Data Error :: Error fetching creature families index.'
+            'Error fetching creature families index.'
         );
     }
 
     async getCreatureFamily(creatureFamilyId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/${creatureFamilyId}`,
-            'WoW Classic Game Data Error :: Error fetching specified creature family.'
+            'Error fetching specified creature family.'
         );
     }
 
     async getCreatureTypesIndex(): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/index`,
-            'WoW Classic Game Data Error :: Error fetching creature types index.'
+            'Error fetching creature types index.'
         );
     }
 
     async getCreatureType(creatureTypeId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/${creatureTypeId}`,
-            'WoW Classic Game Data Error :: Error fetching specified creature type.'
+            'Error fetching specified creature type.'
         );
     }
 
     async getCreature(creatureId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature/${creatureId}`,
-            'WoW Classic Game Data Error :: Error fetching specified creature.'
+            'Error fetching specified creature.'
         );
     }
 
     async getCreatureDisplayMedia(creatureDisplayId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-display/${creatureDisplayId}`,
-            'WoW Classic Game Data Error :: Error fetching specified creature display media.'
+            'Error fetching specified creature display media.'
         );
     }
 
     async getCreatureFamilyMedia(creatureFamilyId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-family/${creatureFamilyId}`,
-            'WoW Classic Game Data Error :: Error fetching specified creature family media.'
+            'Error fetching specified creature family media.'
         );
     }
 
@@ -74,23 +74,23 @@ class WowClassicGameData {
      ****************************/
 
     async getGuildCrestComponentsIndex(): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/index`,
-            'WoW Classic Game Data Error :: Error fetching guild crest components index.'
+            'Error fetching guild crest components index.'
         );
     }
 
     async getGuildCrestBorderMedia(borderId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/border/${borderId}`,
-            'WoW Classic Game Data Error :: Error fetching guild crest border media.'
+            'Error fetching guild crest border media.'
         );
     }
 
     async getGuildCrestEmblemMedia(emblemId: number): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/emblem/${emblemId}`,
-            'WoW Classic Game Data Error :: Error fetching guild crest emblem media.'
+            'Error fetching guild crest emblem media.'
         );
     }
 
@@ -99,43 +99,102 @@ class WowClassicGameData {
      ****************************/
 
     async getItemClassesIndex(): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/index`,
-            'WoW Classic Game Data Error :: Error fetching item class index.'
+            'Error fetching item class index.'
         );
     }
 
     async getItemClass(itemClassId: string): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}`,
-            'WoW Classic Game Data Error :: Error fetching specified item class.'
+            'Error fetching specified item class.'
         );
     }
 
     async getItemSubclass(itemClassId: string, itemSubclassId: string): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}/item-subclass/${itemSubclassId}`,
-            'WoW Classic Game Data Error :: Error fetching specified item class subclass.'
+            'Error fetching specified item class subclass.'
         );
     }
 
     async getItem(itemId: string): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item/${itemId}`,
-            'WoW Classic Game Data Error :: Error fetching specified item.'
+            'Error fetching specified item.'
         );
     }
 
     async getItemMedia(itemId: string): Promise<object> {
-        return await this._apiCall(
+        return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/item/${itemId}`,
-            'WoW Classic Game Data Error :: Error fetching specified item media.'
+            'Error fetching specified item media.'
         );
     }
 
+    /****************************
+     * Playable Class API
+     ****************************/
 
+    async getPlayableClassIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-class/index`,
+            'Error fetching playable class index.'
+        );
+    }
 
-    async _apiCall(apiUrl: string, errorMessage: string) {
+    async getPlayableClass(playableClassId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-class/${playableClassId}`,
+            'Error fetching specified playable class.'
+        );
+    }
+
+    async getPlayableClassMedia(playableClassId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/playable-class/${playableClassId}`,
+            'Error fetching specified playable class media.'
+        );
+    }
+
+    /****************************
+     * Playable Race API
+     ****************************/
+
+    async getPlayableRaceIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-race/index`,
+            'Error fetching playable race index.'
+        );
+    }
+
+    async getPlayableRace(playableRaceId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-race/${playableRaceId}`,
+            'Error fetching specified playable race.'
+        );
+    }
+
+    /****************************
+     * Power Type API
+     ****************************/
+
+    async getPowerTypesIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/power-type/index`,
+            'Error fetching power type index.'
+        );
+    }
+
+    async getPowerType(powerTypeId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/power-type/${powerTypeId}`,
+            'Error fetching specified power type.'
+        );
+    }
+
+    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
             const response = await this.axios.get(apiUrl, {
                 params: {
@@ -145,7 +204,7 @@ class WowClassicGameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error(errorMessage);
+            throw new Error(`WoW Classic Game Data Error :: ${errorMessage}`);
         }
     }
 }
