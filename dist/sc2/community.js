@@ -105,6 +105,9 @@ class Starcraft2Community {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/data/rewards/${regionId}`, 'Error fetching specified legacy rewards data.');
         });
     }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
     _handleApiCall(apiUrl, errorMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

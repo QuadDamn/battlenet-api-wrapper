@@ -22,26 +22,12 @@ class Diablo3Community {
      ****************************/
     getActIndex() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/act`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the act index.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/act`, 'Error fetching the act index.');
         });
     }
     getAct(actId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/act/${actId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the specified act.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/act/${actId}`, 'Error fetching the specified act.');
         });
     }
     /****************************
@@ -49,26 +35,12 @@ class Diablo3Community {
      ****************************/
     getArtisan(artisanSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/artisan/${artisanSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the specified artisan.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/artisan/${artisanSlug}`, 'Error fetching the specified artisan.');
         });
     }
     getRecipe(artisanSlug, recipeSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/artisan/${artisanSlug}/recipe/${recipeSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified recipe.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/artisan/${artisanSlug}/recipe/${recipeSlug}`, 'Error fetching specified recipe.');
         });
     }
     /****************************
@@ -76,14 +48,7 @@ class Diablo3Community {
      ****************************/
     getFollower(followerSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/follower/${followerSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the specified follower.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/follower/${followerSlug}`, 'Error fetching the specified follower.');
         });
     }
     /****************************
@@ -91,26 +56,12 @@ class Diablo3Community {
      ****************************/
     getCharacterClass(classSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/hero/${classSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified hero class.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/hero/${classSlug}`, 'Error fetching specified hero class.');
         });
     }
     getApiSkill(classSlug, skillSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/hero/${classSlug}/skill/${skillSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified hero class skill.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/hero/${classSlug}/skill/${skillSlug}`, 'Error fetching specified hero class skill.');
         });
     }
     /****************************
@@ -118,26 +69,12 @@ class Diablo3Community {
      ****************************/
     getItemTypeIndex() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/item-type`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the item type index.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/item-type`, 'Error fetching the item type index.');
         });
     }
     getItemType(itemTypeSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/item-type/${itemTypeSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the specified item type.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/item-type/${itemTypeSlug}`, 'Error fetching the specified item type.');
         });
     }
     /****************************
@@ -145,14 +82,7 @@ class Diablo3Community {
      ****************************/
     getItem(itemSlugAndId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/item/${itemSlugAndId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching the specified item.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/item/${itemSlugAndId}`, 'Error fetching the specified item.');
         });
     }
     /****************************
@@ -160,53 +90,40 @@ class Diablo3Community {
      ****************************/
     getApiAccount(account) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const formattedBattleTag = yield utils_1.formatBattleTag(account);
-                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching profile information.');
-            }
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}`, 'Error fetching profile information.');
         });
     }
     getApiHero(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const formattedBattleTag = yield utils_1.formatBattleTag(account);
-                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified hero.');
-            }
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}`, 'Error fetching specified hero.');
         });
     }
     getApiDetailedHeroItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const formattedBattleTag = yield utils_1.formatBattleTag(account);
-                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified hero items.');
-            }
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`, 'Error fetching specified hero items.');
         });
     }
     getApiDetailedFollowerItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`, 'Error fetching specified hero follower items.');
+        });
+    }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
+    _handleApiCall(apiUrl, errorMessage) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const formattedBattleTag = yield utils_1.formatBattleTag(account);
-                const response = yield this.axios.get(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`);
+                const response = yield this.axios.get(apiUrl);
                 return response.data;
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Diablo 3 Community Error :: Error fetching specified hero follower items.');
+                throw new Error(`Diablo 3 Community Error :: ${errorMessage}`);
             }
         });
     }

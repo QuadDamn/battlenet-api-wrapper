@@ -194,6 +194,10 @@ class WowClassicGameData {
         );
     }
 
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
+
     async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
             const response = await this.axios.get(apiUrl, {

@@ -3,10 +3,10 @@
 import {AxiosInstance} from "axios";
 
 class HearthstoneGameData {
-    private axios: AxiosInstance;
+    private readonly axios: AxiosInstance;
     private readonly locale: string;
-    private defaultAxiosParams: object;
-    private gameBaseUrlPath: string = '/hearthstone';
+    private readonly defaultAxiosParams: object;
+    private readonly gameBaseUrlPath: string = '/hearthstone';
 
     constructor(axiosInstance: AxiosInstance, locale: string, defaultAxiosParams: object) {
         this.axios = axiosInstance;
@@ -35,15 +35,11 @@ class HearthstoneGameData {
     //     }
     // }
 
-
     async getCard(cardSlug: number): Promise<object> {
-        try {
-            const response = await this.axios.get(`${this.gameBaseUrlPath}/cards/${cardSlug}`);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Hearthstone Game Data Error :: Error fetching the specified card.');
-        }
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/cards/${cardSlug}`,
+            'Error fetching the specified card.'
+        );
     }
 
     /****************************
@@ -51,13 +47,10 @@ class HearthstoneGameData {
      ****************************/
 
     async getDeck(deckCode: string): Promise<object> {
-        try {
-            const response = await this.axios.get(`${this.gameBaseUrlPath}/deck/${deckCode}`);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Hearthstone Game Data Error :: Error fetching the specified deck.');
-        }
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/deck/${deckCode}`,
+            'Error fetching the specified deck.'
+        );
     }
 
     /****************************
@@ -65,22 +58,30 @@ class HearthstoneGameData {
      ****************************/
 
     async getMetadata(): Promise<object> {
-        try {
-            const response = await this.axios.get(`${this.gameBaseUrlPath}/metadata`);
-            return response.data;
-        } catch (error) {
-            console.log(error);
-            throw new Error('Hearthstone Game Data Error :: Error fetching the metadata.');
-        }
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/metadata`,
+            'Error fetching the metadata.'
+        );
     }
 
     async getSpecificMetadata(type: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/metadata/${type}`,
+            'Error fetching the specified metadata.'
+        );
+    }
+
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
+
+    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
-            const response = await this.axios.get(`${this.gameBaseUrlPath}/metadata/${type}`);
+            const response = await this.axios.get(apiUrl);
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error('Hearthstone Game Data Error :: Error fetching the specified metadata.');
+            throw new Error(`Hearthstone Game Data Error :: ${errorMessage}`);
         }
     }
 }

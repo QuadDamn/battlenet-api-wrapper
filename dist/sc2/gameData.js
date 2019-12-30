@@ -21,6 +21,9 @@ class Starcraft2GameData {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`, 'Error fetching the league data.');
         });
     }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
     _handleApiCall(apiUrl, errorMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

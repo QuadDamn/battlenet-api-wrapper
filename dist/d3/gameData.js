@@ -18,73 +18,46 @@ class Diablo3GameData {
     }
     getSeasonIndex() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/season`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the season index.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/season`, 'Error fetching the season index.');
         });
     }
     getSeason(seasonId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/season/${seasonId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the specified season.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/season/${seasonId}`, 'Error fetching the specified season.');
         });
     }
     getSeasonLeaderboard(seasonId, leaderboardId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the specified season leaderboard.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`, 'Error fetching the specified season leaderboard.');
         });
     }
     getEraIndex() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/era`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the era index.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/era`, 'Error fetching the era index.');
         });
     }
     getEra(eraId) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/era/${eraId}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the specified era.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/era/${eraId}`, 'Error fetching the specified era.');
         });
     }
     getEraLeaderboard(eraId, leaderboardId) {
         return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`, 'Error fetching the specified era leaderboard.');
+        });
+    }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
+    _handleApiCall(apiUrl, errorMessage) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`);
+                const response = yield this.axios.get(apiUrl);
                 return response.data;
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Diablo 3 Game Data Error :: Error fetching the specified era leaderboard.');
+                throw new Error(`Diablo 3 Game Data Error :: ${errorMessage}`);
             }
         });
     }

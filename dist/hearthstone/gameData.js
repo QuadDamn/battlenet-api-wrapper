@@ -38,14 +38,7 @@ class HearthstoneGameData {
     // }
     getCard(cardSlug) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/cards/${cardSlug}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Hearthstone Game Data Error :: Error fetching the specified card.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/cards/${cardSlug}`, 'Error fetching the specified card.');
         });
     }
     /****************************
@@ -53,14 +46,7 @@ class HearthstoneGameData {
      ****************************/
     getDeck(deckCode) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/deck/${deckCode}`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Hearthstone Game Data Error :: Error fetching the specified deck.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/deck/${deckCode}`, 'Error fetching the specified deck.');
         });
     }
     /****************************
@@ -68,25 +54,26 @@ class HearthstoneGameData {
      ****************************/
     getMetadata() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/metadata`);
-                return response.data;
-            }
-            catch (error) {
-                console.log(error);
-                throw new Error('Hearthstone Game Data Error :: Error fetching the metadata.');
-            }
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/metadata`, 'Error fetching the metadata.');
         });
     }
     getSpecificMetadata(type) {
         return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/metadata/${type}`, 'Error fetching the specified metadata.');
+        });
+    }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
+    _handleApiCall(apiUrl, errorMessage) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(`${this.gameBaseUrlPath}/metadata/${type}`);
+                const response = yield this.axios.get(apiUrl);
                 return response.data;
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Hearthstone Game Data Error :: Error fetching the specified metadata.');
+                throw new Error(`Hearthstone Game Data Error :: ${errorMessage}`);
             }
         });
     }

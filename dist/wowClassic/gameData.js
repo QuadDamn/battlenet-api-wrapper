@@ -146,6 +146,9 @@ class WowClassicGameData {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/power-type/${powerTypeId}`, 'Error fetching specified power type.');
         });
     }
+    /********************************
+     * Private Class Helper Functions
+     ********************************/
     _handleApiCall(apiUrl, errorMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
