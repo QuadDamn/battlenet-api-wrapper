@@ -25,7 +25,7 @@ class Starcraft2GameData {
 
     async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
-            const response = await this.axios.get(apiUrl);
+            const response = await this.axios.get(encodeURI(apiUrl));
             return response.data;
         } catch (error) {
             console.log(error);

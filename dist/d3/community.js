@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
 class Diablo3Community {
     constructor(axiosInstance, locale) {
         this.gameBaseUrlPath = '/d3/data';
@@ -87,24 +88,36 @@ class Diablo3Community {
     /****************************
      * Profile API
      ****************************/
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     getApiAccount(account) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`/d3/profile/${account}`, 'Error fetching profile information.');
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/`, 'Error fetching profile information.');
         });
     }
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     getApiHero(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}`, 'Error fetching specified hero.');
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}`, 'Error fetching specified hero.');
         });
     }
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     getApiDetailedHeroItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}/items`, 'Error fetching specified hero items.');
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`, 'Error fetching specified hero items.');
         });
     }
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     getApiDetailedFollowerItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}/follower-items`, 'Error fetching specified hero follower items.');
+            const formattedBattleTag = yield utils_1.formatBattleTag(account);
+            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`, 'Error fetching specified hero follower items.');
         });
     }
     /********************************
@@ -113,7 +126,7 @@ class Diablo3Community {
     _handleApiCall(apiUrl, errorMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(apiUrl);
+                const response = yield this.axios.get(encodeURI(apiUrl));
                 return response.data;
             }
             catch (error) {

@@ -52,7 +52,7 @@ class Diablo3GameData {
     _handleApiCall(apiUrl, errorMessage) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(apiUrl);
+                const response = yield this.axios.get(encodeURI(apiUrl));
                 return response.data;
             }
             catch (error) {

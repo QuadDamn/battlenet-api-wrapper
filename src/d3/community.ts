@@ -1,6 +1,7 @@
 // Diablo 3 Community API documentation: https://develop.battle.net/documentation/diablo-3/community-apis
 
 import {AxiosInstance} from "axios";
+import {formatBattleTag} from '../utils';
 
 class Diablo3Community {
     private readonly axios: AxiosInstance;
@@ -110,30 +111,46 @@ class Diablo3Community {
      * Profile API
      ****************************/
 
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     async getApiAccount(account: string): Promise<object> {
+        const formattedBattleTag = await formatBattleTag(account);
+
         return await this._handleApiCall(
-            `/d3/profile/${account}`,
+            `/d3/profile/${formattedBattleTag}/`,
             'Error fetching profile information.'
         );
     }
 
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     async getApiHero(account: string, heroId: string): Promise<object> {
+        const formattedBattleTag = await formatBattleTag(account);
+
         return await this._handleApiCall(
-            `/d3/profile/${account}/hero/${heroId}`,
+            `/d3/profile/${formattedBattleTag}/hero/${heroId}`,
             'Error fetching specified hero.'
         );
     }
 
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     async getApiDetailedHeroItems(account: string, heroId: string): Promise<object> {
+        const formattedBattleTag = await formatBattleTag(account);
+
         return await this._handleApiCall(
-            `/d3/profile/${account}/hero/${heroId}/items`,
+            `/d3/profile/${formattedBattleTag}/hero/${heroId}/items`,
             'Error fetching specified hero items.'
         );
     }
 
+    // Battletag is case-sensitive and will result in a 404 error response
+    // if it doesn't match perfectly with what Blizzard has on record.
     async getApiDetailedFollowerItems(account: string, heroId: string): Promise<object> {
+        const formattedBattleTag = await formatBattleTag(account);
+
         return await this._handleApiCall(
-            `/d3/profile/${account}/hero/${heroId}/follower-items`,
+            `/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`,
             'Error fetching specified hero follower items.'
         );
     }
@@ -144,7 +161,7 @@ class Diablo3Community {
 
     async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
-            const response = await this.axios.get(apiUrl);
+            const response = await this.axios.get(encodeURI(apiUrl));
             return response.data;
         } catch (error) {
             console.log(error);

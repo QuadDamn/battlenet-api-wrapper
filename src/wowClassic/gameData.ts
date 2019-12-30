@@ -9,7 +9,7 @@ class WowClassicGameData {
     private readonly namespace: string;
     private readonly gameBaseUrlPath: string = '/data/wow';
 
-    constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object,origin: string) {
+    constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object, origin: string) {
         this.axios = axiosInstance;
         this.defaultAxiosParams = defaultAxiosParams;
         this.origin = origin;
@@ -200,7 +200,7 @@ class WowClassicGameData {
 
     async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
         try {
-            const response = await this.axios.get(apiUrl, {
+            const response = await this.axios.get(encodeURI(apiUrl), {
                 params: {
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
