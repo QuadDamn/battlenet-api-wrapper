@@ -9,6 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ *
+ *
+ * @param battleTag
+ */
 function formatBattleTag(battleTag) {
     return __awaiter(this, void 0, void 0, function* () {
         return battleTag.replace('#', '-');

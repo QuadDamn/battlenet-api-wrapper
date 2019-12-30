@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const utils_1 = require("../utils");
 class Diablo3Community {
     constructor(axiosInstance, locale) {
         this.gameBaseUrlPath = '/d3/data';
@@ -90,26 +89,22 @@ class Diablo3Community {
      ****************************/
     getApiAccount(account) {
         return __awaiter(this, void 0, void 0, function* () {
-            const formattedBattleTag = yield utils_1.formatBattleTag(account);
-            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}`, 'Error fetching profile information.');
+            return yield this._handleApiCall(`/d3/profile/${account}`, 'Error fetching profile information.');
         });
     }
     getApiHero(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const formattedBattleTag = yield utils_1.formatBattleTag(account);
-            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}`, 'Error fetching specified hero.');
+            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}`, 'Error fetching specified hero.');
         });
     }
     getApiDetailedHeroItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const formattedBattleTag = yield utils_1.formatBattleTag(account);
-            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/items`, 'Error fetching specified hero items.');
+            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}/items`, 'Error fetching specified hero items.');
         });
     }
     getApiDetailedFollowerItems(account, heroId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const formattedBattleTag = yield utils_1.formatBattleTag(account);
-            return yield this._handleApiCall(`/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`, 'Error fetching specified hero follower items.');
+            return yield this._handleApiCall(`/d3/profile/${account}/hero/${heroId}/follower-items`, 'Error fetching specified hero follower items.');
         });
     }
     /********************************

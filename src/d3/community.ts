@@ -1,7 +1,6 @@
 // Diablo 3 Community API documentation: https://develop.battle.net/documentation/diablo-3/community-apis
 
 import {AxiosInstance} from "axios";
-import {formatBattleTag} from '../utils';
 
 class Diablo3Community {
     private readonly axios: AxiosInstance;
@@ -112,37 +111,29 @@ class Diablo3Community {
      ****************************/
 
     async getApiAccount(account: string): Promise<object> {
-        const formattedBattleTag = await formatBattleTag(account);
-
         return await this._handleApiCall(
-            `/d3/profile/${formattedBattleTag}`,
+            `/d3/profile/${account}`,
             'Error fetching profile information.'
         );
     }
 
     async getApiHero(account: string, heroId: string): Promise<object> {
-        const formattedBattleTag = await formatBattleTag(account);
-
         return await this._handleApiCall(
-            `/d3/profile/${formattedBattleTag}/hero/${heroId}`,
+            `/d3/profile/${account}/hero/${heroId}`,
             'Error fetching specified hero.'
         );
     }
 
     async getApiDetailedHeroItems(account: string, heroId: string): Promise<object> {
-        const formattedBattleTag = await formatBattleTag(account);
-
         return await this._handleApiCall(
-            `/d3/profile/${formattedBattleTag}/hero/${heroId}/items`,
+            `/d3/profile/${account}/hero/${heroId}/items`,
             'Error fetching specified hero items.'
         );
     }
 
     async getApiDetailedFollowerItems(account: string, heroId: string): Promise<object> {
-        const formattedBattleTag = await formatBattleTag(account);
-
         return await this._handleApiCall(
-            `/d3/profile/${formattedBattleTag}/hero/${heroId}/follower-items`,
+            `/d3/profile/${account}/hero/${heroId}/follower-items`,
             'Error fetching specified hero follower items.'
         );
     }
