@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 class HearthstoneGameData {
-    constructor(axiosInstance, locale, defaultAxiosParams) {
+    constructor(axiosInstance, defaultAxiosParams, locale) {
         this.gameBaseUrlPath = '/hearthstone';
         this.axios = axiosInstance;
         this.locale = locale;

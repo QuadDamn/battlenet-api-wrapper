@@ -16,6 +16,8 @@ const gameData_2 = require("./hearthstone/gameData");
 const community_2 = require("./sc2/community");
 const gameData_3 = require("./sc2/gameData");
 const gameData_4 = require("./wowClassic/gameData");
+const profileData_1 = require("./wow/profileData");
+const gameData_5 = require("./wow/gameData");
 class BattleNetWrapper {
     // Unused constructor as we needed the ability to async the initialization
     // and await all of the underlying promises.
@@ -79,17 +81,15 @@ class BattleNetWrapper {
             catch (error) {
                 console.log(error);
             }
-            // console.log(this.oauthToken);
-            // this.WowCommunity = new WowCommunity(this.axios, this.origin);
-            // this.WowGameData = new WowGameData(this.axios, this.origin);
-            // this.WowProfileData = new WowProfileData(this.axios, this.origin);
-            //
-            this.WowClassicGameData = new gameData_4.default(this.axios, this.defaultAxiosParams, this.origin);
-            this.Starcraft2Community = new community_2.default(this.axios, this.origin);
-            this.Starcraft2GameData = new gameData_3.default(this.axios, this.origin);
-            this.HearthstoneGameData = new gameData_2.default(this.axios, this.origin, this.defaultAxiosParams);
             this.Diablo3Community = new community_1.default(this.axios, this.locale);
             this.Diablo3GameData = new gameData_1.default(this.axios, this.origin);
+            this.HearthstoneGameData = new gameData_2.default(this.axios, this.defaultAxiosParams, this.origin);
+            this.Starcraft2Community = new community_2.default(this.axios, this.origin);
+            this.Starcraft2GameData = new gameData_3.default(this.axios, this.origin);
+            // this.WowCommunity = new WowCommunity(this.axios, this.origin);
+            this.WowGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
+            this.WowProfileData = new profileData_1.default(this.axios, this.defaultAxiosParams, this.origin);
+            this.WowClassicGameData = new gameData_4.default(this.axios, this.defaultAxiosParams, this.origin);
         });
     }
     /**

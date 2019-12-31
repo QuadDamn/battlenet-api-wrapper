@@ -1,4 +1,4 @@
-// WoW Game Data API documentation: https://develop.battle.net/documentation/world-of-warcraft/game-data-apis
+// WoW Profile Data API documentation: https://develop.battle.net/documentation/world-of-warcraft/profile-apis
 
 import {AxiosInstance} from "axios";
 
@@ -14,6 +14,13 @@ class WowProfileData {
         this.namespace = `profile-${origin}`;
     }
 
+    /**
+     * Returns a summary of the achievements a character has completed.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterAchievements(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/achievements`,
@@ -21,6 +28,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of a character's appearance settings.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterAppearance(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/appearance`,
@@ -28,6 +42,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns an index of collection types for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterCollectionsIndex(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/collections`,
@@ -35,6 +56,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of the mounts a character has obtained.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterMountsCollection(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/collections/mounts`,
@@ -42,6 +70,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of the battle pets a character has obtained.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterPetsCollection(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/collections/pets`,
@@ -49,6 +84,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of the items equipped by a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterEquipment(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/equipment`,
@@ -56,6 +98,14 @@ class WowProfileData {
         );
     }
 
+    /**
+     * If the character is a hunter, returns a summary of the character's hunter pets.
+     * Otherwise, returns an HTTP 404 Not Found error.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterHunterPets(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/hunter-pets`,
@@ -63,6 +113,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of the media assets available for a character (such as an avatar render).
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterMedia(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/character-media`,
@@ -70,6 +127,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns the Mythic Keystone profile index for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterMythicKeystoneProfile(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/mythic-keystone-profile`,
@@ -77,6 +141,14 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns the Mythic Keystone season details for a character.
+     * Returns a **404 Not Found** for characters that have not yet completed a Mythic Keystone dungeon for the specified season.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterMythicKeystoneSeasonDetails(realmSlug: string, characterName: string, seasonId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/mythic-keystone-profile/season/${seasonId}`,
@@ -84,6 +156,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a profile summary for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterSummary(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}`,
@@ -91,6 +170,14 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns the PvP bracket statistics for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     * @param pvpBracket The PvP bracket type (1v1, 3v3, etc).
+     *
+     */
     async getCharacterPvpBracketStatistics(realmSlug: string, characterName: string, pvpBracket: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/pvp-bracket/${pvpBracket}`,
@@ -98,6 +185,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a PvP summary for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterPvpSummary(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/pvp-summary`,
@@ -105,6 +199,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of a character's reputations.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterReputations(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/reputations`,
@@ -112,6 +213,27 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of a character's specializations.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
+    async getCharacterSpecializations(realmSlug: string, characterName: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/specializations`,
+            'Error fetching character specializations.'
+        );
+    }
+
+    /**
+     * Returns a statistics summary for a character.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterStatistics(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/statistics`,
@@ -119,6 +241,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a summary of titles a character has obtained.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param characterName The lowercase name of the character.
+     *
+     */
     async getCharacterTitles(realmSlug: string, characterName: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/${realmSlug}/${characterName}/titles`,
@@ -126,6 +255,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a single guild summary by its name and realm.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param guildName The slug of the guild.
+     *
+     */
     async getGuildSummary(realmSlug: string, guildName: string): Promise<object> {
         return await this._handleApiCall(
             `/data/wow/guild//${realmSlug}/${guildName}`,
@@ -133,6 +269,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a single guild's achievements by name and realm.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param guildName The slug of the guild.
+     *
+     */
     async getGuildAchievements(realmSlug: string, guildName: string): Promise<object> {
         return await this._handleApiCall(
             `/data/wow/guild/${realmSlug}/${guildName}/achievements`,
@@ -140,6 +283,13 @@ class WowProfileData {
         );
     }
 
+    /**
+     * Returns a single guild's roster by its name and realm.
+     *
+     * @param realmSlug The slug of the realm.
+     * @param guildName The slug of the guild.
+     *
+     */
     async getGuildRoster(realmSlug: string, guildName: string): Promise<object> {
         return await this._handleApiCall(
             `/data/wow/guild/${realmSlug}/${guildName}`,

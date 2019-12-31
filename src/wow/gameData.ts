@@ -20,6 +20,9 @@ class WowGameData {
      * Achievement API
      ****************************/
 
+    /**
+     * Returns an index of achievement categories.
+     */
     async getAchievementCategoriesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/achievement-category/index`,
@@ -28,6 +31,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an achievement category by ID.
+     *
+     * @param achievementCategoryId The ID of the achievement category.
+     */
     async getAchievementCategory(achievementCategoryId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/achievement-category/${achievementCategoryId}`,
@@ -36,6 +44,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of achievements.
+     */
     async getAchievementIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/achievement/index`,
@@ -44,6 +55,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an achievement by ID.
+     *
+     * @param achievementId The ID of the achievement.
+     */
     async getAchievement(achievementId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/achievement/${achievementId}`,
@@ -52,6 +68,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for an achievement by ID.
+     *
+     * @param achievementId The ID of the achievement.
+     */
     async getAchievementMedia(achievementId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/achievement/${achievementId}`,
@@ -64,6 +85,9 @@ class WowGameData {
      * Azerite Essence API
      ****************************/
 
+    /**
+     * Returns an index of azerite essences.
+     */
     async getAzeriteEssenceIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/azerite-essence/index`,
@@ -72,6 +96,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an azerite essence by ID.
+     *
+     * @param azeriteEssenceId The ID of the azerite essence.
+     */
     async getAzeriteEssence(azeriteEssenceId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/azerite-essence/${azeriteEssenceId}`,
@@ -80,6 +109,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for an azerite essence by ID.
+     *
+     * @param azeriteEssenceId The ID of the azerite essence.
+     */
     async getAzeriteEssenceMedia(azeriteEssenceId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/azerite-essence/${azeriteEssenceId}`,
@@ -89,9 +123,12 @@ class WowGameData {
     }
 
     /****************************
-     * Azerite Essence API
+     * Connected Realms API
      ****************************/
 
+    /**
+     * Returns an index of connected realms.
+     */
     async getConnectedRealmsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/index`,
@@ -100,6 +137,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a connected realm by ID.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     */
     async getConnectedRealm(connectedRealmId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}`,
@@ -112,6 +154,9 @@ class WowGameData {
      * Creature API
      ****************************/
 
+    /**
+     * Returns an index of creature families.
+     */
     async getCreatureFamiliesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/index`,
@@ -120,6 +165,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a creature family by ID.
+     *
+     * @param creatureFamilyId The ID of the creature family.
+     */
     async getCreatureFamily(creatureFamilyId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/${creatureFamilyId}`,
@@ -128,6 +178,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of creature types.
+     */
     async getCreatureTypesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/index`,
@@ -136,6 +189,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a creature type by ID.
+     *
+     * @param creatureTypeId The ID of the creature type.
+     */
     async getCreatureType(creatureTypeId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/${creatureTypeId}`,
@@ -144,6 +202,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a creature by ID.
+     *
+     * @param creatureId The ID of the creature.
+     */
     async getCreature(creatureId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature/${creatureId}`,
@@ -152,6 +215,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for a creature display by ID.
+     *
+     * @param creatureDisplayId The ID of the creature display.
+     */
     async getCreatureDisplayMedia(creatureDisplayId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-display/${creatureDisplayId}`,
@@ -160,6 +228,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for a creature family by ID.
+     *
+     * @param creatureFamilyId The ID of the creature family.
+     */
     async getCreatureFamilyMedia(creatureFamilyId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-family/${creatureFamilyId}`,
@@ -172,6 +245,9 @@ class WowGameData {
      * Guild Crest API
      ****************************/
 
+    /**
+     * Returns an index of guild crest media.
+     */
     async getGuildCrestComponentsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/index`,
@@ -180,6 +256,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for a guild crest border by ID.
+     *
+     * @param borderId The ID of the guild crest border.
+     */
     async getGuildCrestBorderMedia(borderId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/border/${borderId}`,
@@ -188,6 +269,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for a guild crest emblem by ID.
+     *
+     * @param emblemId The ID of the guild crest emblem.
+     */
     async getGuildCrestEmblemMedia(emblemId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/emblem/${emblemId}`,
@@ -200,6 +286,9 @@ class WowGameData {
      * Item API
      ****************************/
 
+    /**
+     * Returns an index of item classes.
+     */
     async getItemClassesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/index`,
@@ -208,6 +297,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an item class by ID.
+     *
+     * @param itemClassId The ID of the item class.
+     */
     async getItemClass(itemClassId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}`,
@@ -216,6 +310,12 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an item subclass by ID.
+     *
+     * @param itemClassId The ID of the item class.
+     * @param itemSubclassId The ID of the item subclass.
+     */
     async getItemSubclass(itemClassId: string, itemSubclassId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}/item-subclass/${itemSubclassId}`,
@@ -224,6 +324,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an item by ID.
+     *
+     * @param itemId The ID of the item.
+     */
     async getItem(itemId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item/${itemId}`,
@@ -232,6 +337,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for an item by ID.
+     *
+     * @param itemId The ID of the item.
+     */
     async getItemMedia(itemId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/item/${itemId}`,
@@ -244,6 +354,9 @@ class WowGameData {
      * Mythic Keystone Affix API
      ****************************/
 
+    /**
+     * Returns a index of mythic keystone affixes.
+     */
     async getMythicKeystoneAffixesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/keystone-affix/index`,
@@ -252,6 +365,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a mythic keystone affix by ID.
+     *
+     * @param keystoneAffixId The ID of the Keystone affix.
+     */
     async getMythicKeystoneAffix(keystoneAffixId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/keystone-affix/${keystoneAffixId}`,
@@ -264,6 +382,12 @@ class WowGameData {
      * Mythic Raid Leaderboard API
      ****************************/
 
+    /**
+     * Returns the leaderboard for a given raid and faction.
+     *
+     * @param raid The raid for a leaderboard.
+     * @param faction Player faction (`alliance` or `horde`).
+     */
     async getMythicRaidLeaderboard(raid: string, faction: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/leaderboard/hall-of-fame/${raid}/${faction}`,
@@ -276,6 +400,9 @@ class WowGameData {
      * Mounts API
      ****************************/
 
+    /**
+     * Returns an index of mounts.
+     */
     async getMountsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mount/index`,
@@ -284,6 +411,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a mount by ID.
+     *
+     * @param mountId
+     */
     async getMount(mountId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mount/${mountId}`,
@@ -296,6 +428,9 @@ class WowGameData {
      * Mythic Keystone Dungeon API
      ****************************/
 
+    /**
+     * Returns an index of Mythic Keystone dungeons.
+     */
     async getMythicKeystoneDungeonsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/dungeon/index`,
@@ -304,6 +439,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a Mythic Keystone dungeon by ID.
+     *
+     * @param dungeonId
+     */
     async getMythicKeystoneDungeon(dungeonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/dungeon/${dungeonId}`,
@@ -312,6 +452,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of links to other documents related to Mythic Keystone dungeons.
+     */
     async getMythicKeystoneIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/index`,
@@ -320,6 +463,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of Mythic Keystone periods.
+     */
     async getMythicKeystonePeriodsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/period/index`,
@@ -328,6 +474,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a Mythic Keystone period by ID.
+     *
+     * @param periodId The ID of the Mythic Keystone season period.
+     */
     async getMythicKeystonePeriod(periodId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/period/${periodId}`,
@@ -336,6 +487,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of Mythic Keystone seasons.
+     */
     async getMythicKeystoneSeasonsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/season/index`,
@@ -344,6 +498,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a Mythic Keystone season by ID.
+     *
+     * @param seasonId
+     */
     async getMythicKeystoneSeason(seasonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/mythic-keystone/season/${seasonId}`,
@@ -356,6 +515,11 @@ class WowGameData {
      * Mythic Keystone Leaderboard API
      ********************************/
 
+    /**
+     * Returns an index of Mythic Keystone Leaderboard dungeon instances for a connected realm.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     */
     async getMythicKeystoneLeaderboardsIndex(connectedRealmId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/index`,
@@ -364,6 +528,13 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a weekly Mythic Keystone Leaderboard by period.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     * @param dungeonId The ID of the dungeon.
+     * @param period The unique identifier for the leaderboard period.
+     */
     async getMythicKeystoneLeaderboard(connectedRealmId: number, dungeonId: number, period: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/${dungeonId}/period/${period}`,
@@ -376,6 +547,9 @@ class WowGameData {
      * Pets API
      ****************************/
 
+    /**
+     * Returns an index of pets.
+     */
     async getPetsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pet/index`,
@@ -384,6 +558,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a pet by ID.
+     *
+     * @param petId The ID of the pet.
+     */
     async getPet(petId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pet/${petId}`,
@@ -396,6 +575,9 @@ class WowGameData {
      * Playable Class API
      ****************************/
 
+    /**
+     * Returns an index of playable classes.
+     */
     async getPlayableClassIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-class/index`,
@@ -404,6 +586,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a playable class by ID.
+     *
+     * @param playableClassId The ID of the playable class.
+     */
     async getPlayableClass(playableClassId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-class/${playableClassId}`,
@@ -412,6 +599,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns media for a playable class by ID.
+     *
+     * @param playableClassId The ID of the playable class.
+     */
     async getPlayableClassMedia(playableClassId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/playable-class/${playableClassId}`,
@@ -420,10 +612,26 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns the PvP talent slots for a playable class by ID.
+     *
+     * @param playableClassId The ID of the playable class.
+     */
+    async getPlayableClassPvpTalentSlots(playableClassId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-class/${playableClassId}/pvp-talent-slots`,
+            'Error fetching specified playable class pvp talent slots.',
+            this.staticNamespace
+        );
+    }
+
     /****************************
      * Playable Race API
      ****************************/
 
+    /**
+     *
+     */
     async getPlayableRaceIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-race/index`,

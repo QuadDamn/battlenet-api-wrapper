@@ -8,7 +8,7 @@ class HearthstoneGameData {
     private readonly defaultAxiosParams: object;
     private readonly gameBaseUrlPath: string = '/hearthstone';
 
-    constructor(axiosInstance: AxiosInstance, locale: string, defaultAxiosParams: object) {
+    constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object, locale: string) {
         this.axios = axiosInstance;
         this.locale = locale;
         this.defaultAxiosParams = defaultAxiosParams;
