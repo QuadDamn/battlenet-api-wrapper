@@ -16,7 +16,11 @@ class Starcraft2Community {
      * Profile API
      ****************************/
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns all static SC2 profile data (achievements, categories, criteria, and rewards).
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     async getStaticProfileData(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/static/profile/${regionId}`,
@@ -24,7 +28,13 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns metadata for an individual's profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getMetadata(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/static/profile/${regionId}/${realmId}/${profileId}`,
@@ -32,7 +42,13 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getProfile(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}`,
@@ -40,7 +56,13 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns a ladder summary for an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getLadderSummary(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/summary`,
@@ -48,7 +70,14 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual profile's ladder.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     * @param ladderId The ID of the ladder for which to retrieve data.
+     */
     async getLadder(regionId: number, realmId: number, profileId: number, ladderId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/${ladderId}`,
@@ -60,7 +89,11 @@ class Starcraft2Community {
      * Ladder API
      ****************************/
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns ladder data for the current season's grandmaster leaderboard.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     async getGrandmasterLeaderboard(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/ladder/grandmaster/${regionId}`,
@@ -68,7 +101,11 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the current season.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     async getSeason(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/ladder/season/${regionId}`,
@@ -80,6 +117,11 @@ class Starcraft2Community {
      * Account API
      ****************************/
 
+    /**
+     * Returns metadata for an individual's account.
+     *
+     * @param accountId The ID of the account for which to retrieve data.
+     */
     async getPlayer(accountId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/player/${accountId}`,
@@ -91,7 +133,13 @@ class Starcraft2Community {
      * Legacy API
      ****************************/
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Retrieves data about an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getLegacyProfile(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}`,
@@ -99,7 +147,13 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Retrieves data about an individual SC2 profile's ladders.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getLegacyProfileLadders(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/ladders`,
@@ -107,7 +161,13 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual SC2 profile's match history.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     async getLegacyProfileMatches(regionId: number, realmId: number, profileId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/matches`,
@@ -115,7 +175,11 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the achievements available in SC2.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     async getLegacyAchievements(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/legacy/data/achievements/${regionId}`,
@@ -123,7 +187,11 @@ class Starcraft2Community {
         );
     }
 
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the rewards available in SC2.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     async getLegacyRewards(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/legacy/data/rewards/${regionId}`,

@@ -19,31 +19,60 @@ class Starcraft2Community {
     /****************************
      * Profile API
      ****************************/
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns all static SC2 profile data (achievements, categories, criteria, and rewards).
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     getStaticProfileData(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/static/profile/${regionId}`, 'Error fetching static profile data for the specified region.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns metadata for an individual's profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getMetadata(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/static/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching profile data for the specified region.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getProfile(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching specified profile data.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns a ladder summary for an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getLadderSummary(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/summary`, 'Error fetching specified ladder summary.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual profile's ladder.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     * @param ladderId The ID of the ladder for which to retrieve data.
+     */
     getLadder(regionId, realmId, profileId, ladderId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/profile/${regionId}/${realmId}/${profileId}/ladder/${ladderId}`, 'Error fetching specified ladder.');
@@ -52,13 +81,21 @@ class Starcraft2Community {
     /****************************
      * Ladder API
      ****************************/
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns ladder data for the current season's grandmaster leaderboard.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     getGrandmasterLeaderboard(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/ladder/grandmaster/${regionId}`, 'Error fetching static profile data for the specified region.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the current season.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     getSeason(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/ladder/season/${regionId}`, 'Error fetching static profile data for the specified region.');
@@ -67,6 +104,11 @@ class Starcraft2Community {
     /****************************
      * Account API
      ****************************/
+    /**
+     * Returns metadata for an individual's account.
+     *
+     * @param accountId The ID of the account for which to retrieve data.
+     */
     getPlayer(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/player/${accountId}`, 'Error fetching metadata for player account.');
@@ -75,31 +117,57 @@ class Starcraft2Community {
     /****************************
      * Legacy API
      ****************************/
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Retrieves data about an individual SC2 profile.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getLegacyProfile(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}`, 'Error fetching specified legacy profile data.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Retrieves data about an individual SC2 profile's ladders.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getLegacyProfileLadders(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/ladders`, 'Error fetching specified legacy profile ladder data.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about an individual SC2 profile's match history.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     * @param realmId The region of the profile (`1` or `2`).
+     * @param profileId The profile ID.
+     */
     getLegacyProfileMatches(regionId, realmId, profileId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/profile/${regionId}/${realmId}/${profileId}/matches`, 'Error fetching specified legacy profile match data.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the achievements available in SC2.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     getLegacyAchievements(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/data/achievements/${regionId}`, 'Error fetching specified legacy achievement data.');
         });
     }
-    // The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+    /**
+     * Returns data about the rewards available in SC2.
+     *
+     * @param regionId The region for the profile (`1`=US, `2`=EU, `3`=KO and TW, `5`=CN).
+     */
     getLegacyRewards(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/legacy/data/rewards/${regionId}`, 'Error fetching specified legacy rewards data.');
