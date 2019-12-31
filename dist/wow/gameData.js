@@ -483,13 +483,18 @@ class WowGameData {
      * Playable Race API
      ****************************/
     /**
-     *
+     * Returns an index of playable races.
      */
     getPlayableRaceIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-race/index`, 'Error fetching playable race index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a playable race by ID.
+     *
+     * @param playableRaceId The ID of the playable race.
+     */
     getPlayableRace(playableRaceId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-race/${playableRaceId}`, 'Error fetching specified playable race.', this.staticNamespace);
@@ -498,11 +503,19 @@ class WowGameData {
     /*****************************
      * Playable Specialization API
      ****************************/
+    /**
+     * Returns an index of playable specializations.
+     */
     getPlayableSpecializationIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-specialization/index`, 'Error fetching playable specialization index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a playable specialization by ID.
+     *
+     * @param playableSpecializationId The ID of the playable specialization.
+     */
     getPlayableSpecialization(playableSpecializationId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-specialization/${playableSpecializationId}`, 'Error fetching specified playable specialization.', this.staticNamespace);
@@ -511,11 +524,19 @@ class WowGameData {
     /****************************
      * Power Type API
      ****************************/
+    /**
+     * Returns an index of power types.
+     */
     getPowerTypesIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/power-type/index`, 'Error fetching power type index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a power type by ID.
+     *
+     * @param powerTypeId
+     */
     getPowerType(powerTypeId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/power-type/${powerTypeId}`, 'Error fetching specified power type.', this.staticNamespace);
@@ -524,26 +545,50 @@ class WowGameData {
     /****************************
      * PvP Season API
      ****************************/
+    /**
+     * Returns an index of PvP seasons.
+     */
     getPvpSeasonsIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/index`, 'Error fetching pvp season index.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns a PvP season by ID.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     getPvpSeason(pvpSeasonId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}`, 'Error fetching specified pvp season.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns an index of PvP leaderboards for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     getPvpLeaderboardsIndex(pvpSeasonId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/index`, 'Error fetching pvp season leaderboard index.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns the PvP leaderboard of a specific PvP bracket for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     * @param pvpBracket The PvP bracket type (1v1, 3v3, etc).
+     */
     getPvpLeaderboard(pvpSeasonId, pvpBracket) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/${pvpBracket}`, 'Error fetching specified pvp season leaderboard.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns an index of PvP rewards for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     getPvpRewardsIndex(pvpSeasonId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-reward/index`, 'Error fetching pvp reward index.', this.dynamicNamespace);
@@ -552,16 +597,29 @@ class WowGameData {
     /****************************
      * PvP Tier API
      ****************************/
+    /**
+     * Returns media for a PvP tier by ID.
+     *
+     * @param pvpTierId The ID of the PvP tier.
+     */
     getPvpTierMedia(pvpTierId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/pvp-tier/${pvpTierId}`, 'Error fetching specified pvp tier media.', this.staticNamespace);
         });
     }
+    /**
+     * Returns an index of PvP tiers.
+     */
     getPvpTiersIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-tier/index`, 'Error fetching pvp tier index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a PvP tier by ID.
+     *
+     * @param pvpTierId The ID of the PvP tier.
+     */
     getPvpTier(pvpTierId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-tier/${pvpTierId}`, 'Error fetching specified pvp tier.', this.staticNamespace);
@@ -570,11 +628,19 @@ class WowGameData {
     /****************************
      * Realm API
      ****************************/
+    /**
+     * Returns an index of realms.
+     */
     getRealmsIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/realm/index`, 'Error fetching realm index.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns a single realm by slug or ID.
+     *
+     * @param realmSlug The slug of the realm.
+     */
     getRealm(realmSlug) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/realm/${realmSlug}`, 'Error fetching specified realm.', this.dynamicNamespace);
@@ -583,11 +649,19 @@ class WowGameData {
     /****************************
      * Region API
      ****************************/
+    /**
+     * Returns an index of regions.
+     */
     getRegionsIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/region/index`, 'Error fetching region index.', this.dynamicNamespace);
         });
     }
+    /**
+     * Returns a region by ID.
+     *
+     * @param regionId The ID of the region.
+     */
     getRegion(regionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/region/${regionId}`, 'Error fetching specified region.', this.dynamicNamespace);
@@ -596,34 +670,58 @@ class WowGameData {
     /****************************
      * Reputations API
      ****************************/
+    /**
+     * Returns an index of reputation factions.
+     */
     getReputationFactionsIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-faction/index`, 'Error fetching reputation faction index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a single reputation faction by ID.
+     *
+     * @param reputationFactionId The ID of the reputation faction.
+     */
     getReputationFaction(reputationFactionId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-faction/${reputationFactionId}`, 'Error fetching specified reputation faction.', this.staticNamespace);
         });
     }
+    /**
+     * Returns an index of reputation tiers.
+     */
     getReputationTiersIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-tiers/index`, 'Error fetching reputation faction index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a single set of reputation tiers by ID.
+     *
+     * @param reputationTiersId The ID of the set of reputation tiers.
+     */
     getReputationTiers(reputationTiersId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-tiers/${reputationTiersId}`, 'Error fetching specified reputation tiers.', this.staticNamespace);
         });
     }
     /****************************
-     * Realm API
+     * Titles API
      ****************************/
+    /**
+     * Returns an index of titles.
+     */
     getTitlesIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/title/index`, 'Error fetching title index.', this.staticNamespace);
         });
     }
+    /**
+     * Returns a title by ID.
+     *
+     * @param titleId The ID of the title.
+     */
     getTitle(titleId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/title/${titleId}`, 'Error fetching specified title.', this.staticNamespace);
@@ -632,6 +730,9 @@ class WowGameData {
     /****************************
      * WoW Token API
      ****************************/
+    /**
+     * Returns the WoW Token index.
+     */
     getWowTokenIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/token/index`, 'Error fetching token index.', this.dynamicNamespace);

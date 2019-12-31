@@ -630,7 +630,7 @@ class WowGameData {
      ****************************/
 
     /**
-     *
+     * Returns an index of playable races.
      */
     async getPlayableRaceIndex(): Promise<object> {
         return await this._handleApiCall(
@@ -640,6 +640,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a playable race by ID.
+     *
+     * @param playableRaceId The ID of the playable race.
+     */
     async getPlayableRace(playableRaceId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-race/${playableRaceId}`,
@@ -652,6 +657,9 @@ class WowGameData {
      * Playable Specialization API
      ****************************/
 
+    /**
+     * Returns an index of playable specializations.
+     */
     async getPlayableSpecializationIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-specialization/index`,
@@ -660,6 +668,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a playable specialization by ID.
+     *
+     * @param playableSpecializationId The ID of the playable specialization.
+     */
     async getPlayableSpecialization(playableSpecializationId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-specialization/${playableSpecializationId}`,
@@ -672,6 +685,9 @@ class WowGameData {
      * Power Type API
      ****************************/
 
+    /**
+     * Returns an index of power types.
+     */
     async getPowerTypesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/power-type/index`,
@@ -680,6 +696,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a power type by ID.
+     *
+     * @param powerTypeId
+     */
     async getPowerType(powerTypeId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/power-type/${powerTypeId}`,
@@ -692,6 +713,9 @@ class WowGameData {
      * PvP Season API
      ****************************/
 
+    /**
+     * Returns an index of PvP seasons.
+     */
     async getPvpSeasonsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-season/index`,
@@ -700,6 +724,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a PvP season by ID.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     async getPvpSeason(pvpSeasonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}`,
@@ -708,6 +737,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of PvP leaderboards for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     async getPvpLeaderboardsIndex(pvpSeasonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/index`,
@@ -716,6 +750,12 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns the PvP leaderboard of a specific PvP bracket for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     * @param pvpBracket The PvP bracket type (1v1, 3v3, etc).
+     */
     async getPvpLeaderboard(pvpSeasonId: number, pvpBracket: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/${pvpBracket}`,
@@ -724,6 +764,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of PvP rewards for a PvP season.
+     *
+     * @param pvpSeasonId The ID of the PvP season.
+     */
     async getPvpRewardsIndex(pvpSeasonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-reward/index`,
@@ -736,6 +781,11 @@ class WowGameData {
      * PvP Tier API
      ****************************/
 
+    /**
+     * Returns media for a PvP tier by ID.
+     *
+     * @param pvpTierId The ID of the PvP tier.
+     */
     async getPvpTierMedia(pvpTierId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/pvp-tier/${pvpTierId}`,
@@ -744,6 +794,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of PvP tiers.
+     */
     async getPvpTiersIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-tier/index`,
@@ -752,6 +805,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a PvP tier by ID.
+     *
+     * @param pvpTierId The ID of the PvP tier.
+     */
     async getPvpTier(pvpTierId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/pvp-tier/${pvpTierId}`,
@@ -764,6 +822,9 @@ class WowGameData {
      * Realm API
      ****************************/
 
+    /**
+     * Returns an index of realms.
+     */
     async getRealmsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/realm/index`,
@@ -772,6 +833,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a single realm by slug or ID.
+     *
+     * @param realmSlug The slug of the realm.
+     */
     async getRealm(realmSlug: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/realm/${realmSlug}`,
@@ -784,6 +850,9 @@ class WowGameData {
      * Region API
      ****************************/
 
+    /**
+     * Returns an index of regions.
+     */
     async getRegionsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/region/index`,
@@ -792,6 +861,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a region by ID.
+     *
+     * @param regionId The ID of the region.
+     */
     async getRegion(regionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/region/${regionId}`,
@@ -800,11 +874,13 @@ class WowGameData {
         );
     }
 
-
     /****************************
      * Reputations API
      ****************************/
 
+    /**
+     * Returns an index of reputation factions.
+     */
     async getReputationFactionsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/reputation-faction/index`,
@@ -813,6 +889,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a single reputation faction by ID.
+     *
+     * @param reputationFactionId The ID of the reputation faction.
+     */
     async getReputationFaction(reputationFactionId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/reputation-faction/${reputationFactionId}`,
@@ -821,6 +902,9 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns an index of reputation tiers.
+     */
     async getReputationTiersIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/reputation-tiers/index`,
@@ -829,6 +913,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a single set of reputation tiers by ID.
+     *
+     * @param reputationTiersId The ID of the set of reputation tiers.
+     */
     async getReputationTiers(reputationTiersId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/reputation-tiers/${reputationTiersId}`,
@@ -838,9 +927,12 @@ class WowGameData {
     }
 
     /****************************
-     * Realm API
+     * Titles API
      ****************************/
 
+    /**
+     * Returns an index of titles.
+     */
     async getTitlesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/title/index`,
@@ -849,6 +941,11 @@ class WowGameData {
         );
     }
 
+    /**
+     * Returns a title by ID.
+     *
+     * @param titleId The ID of the title.
+     */
     async getTitle(titleId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/title/${titleId}`,
@@ -861,6 +958,9 @@ class WowGameData {
      * WoW Token API
      ****************************/
 
+    /**
+     * Returns the WoW Token index.
+     */
     async getWowTokenIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/token/index`,
