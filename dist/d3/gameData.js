@@ -15,31 +15,59 @@ class Diablo3GameData {
         this.gameBaseUrlPath = '/data/d3';
         this.axios = axiosInstance;
     }
+    /**
+     * Returns an index of available seasons.
+     */
     getSeasonIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/season`, 'Error fetching the season index.');
         });
     }
+    /**
+     * Returns a leaderboard list for the specified season.
+     *
+     * @param seasonId The season for the leaderboard list; get a list of seasons with `getSeasonIndex`.
+     */
     getSeason(seasonId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/season/${seasonId}`, 'Error fetching the specified season.');
         });
     }
+    /**
+     * Returns a the specified leaderboard for the specified season.
+     *
+     * @param seasonId The season for the leaderboard; get a list of seasons with `getSeasonIndex`.
+     * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getSeason`.
+     */
     getSeasonLeaderboard(seasonId, leaderboardId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`, 'Error fetching the specified season leaderboard.');
         });
     }
+    /**
+     * Returns an index of available eras.
+     */
     getEraIndex() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/era`, 'Error fetching the era index.');
         });
     }
+    /**
+     * Returns a leaderboard list for a particular era.
+     *
+     * @param eraId The era to retrieve; get a list of eras with `getEraIndex`.
+     */
     getEra(eraId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/era/${eraId}`, 'Error fetching the specified era.');
         });
     }
+    /**
+     * Returns the specified leaderboard for the specified era.
+     *
+     * @param eraId The era for the leaderboard; get a list of eras with `getEraIndex`.
+     * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getEra`.
+     */
     getEraLeaderboard(eraId, leaderboardId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`, 'Error fetching the specified era leaderboard.');

@@ -10,6 +10,9 @@ class Diablo3GameData {
         this.axios = axiosInstance;
     }
 
+    /**
+     * Returns an index of available seasons.
+     */
     async getSeasonIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/season`,
@@ -17,6 +20,11 @@ class Diablo3GameData {
         );
     }
 
+    /**
+     * Returns a leaderboard list for the specified season.
+     *
+     * @param seasonId The season for the leaderboard list; get a list of seasons with `getSeasonIndex`.
+     */
     async getSeason(seasonId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/season/${seasonId}`,
@@ -24,6 +32,12 @@ class Diablo3GameData {
         );
     }
 
+    /**
+     * Returns a the specified leaderboard for the specified season.
+     *
+     * @param seasonId The season for the leaderboard; get a list of seasons with `getSeasonIndex`.
+     * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getSeason`.
+     */
     async getSeasonLeaderboard(seasonId: number, leaderboardId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`,
@@ -31,6 +45,9 @@ class Diablo3GameData {
         );
     }
 
+    /**
+     * Returns an index of available eras.
+     */
     async getEraIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/era`,
@@ -38,6 +55,11 @@ class Diablo3GameData {
         );
     }
 
+    /**
+     * Returns a leaderboard list for a particular era.
+     *
+     * @param eraId The era to retrieve; get a list of eras with `getEraIndex`.
+     */
     async getEra(eraId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/era/${eraId}`,
@@ -45,6 +67,12 @@ class Diablo3GameData {
         );
     }
 
+    /**
+     * Returns the specified leaderboard for the specified era.
+     *
+     * @param eraId The era for the leaderboard; get a list of eras with `getEraIndex`.
+     * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getEra`.
+     */
     async getEraLeaderboard(eraId: number, leaderboardId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`,
