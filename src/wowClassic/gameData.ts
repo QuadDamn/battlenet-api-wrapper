@@ -16,10 +16,9 @@ class WowClassicGameData {
         this.namespace = `static-classic-${origin}`;
     }
 
-    /****************************
-     * Creature API
-     ****************************/
-
+    /**
+     * Returns an index of creature families.
+     */
     async getCreatureFamiliesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/index`,
@@ -27,6 +26,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a creature family by ID.
+     *
+     * @param creatureFamilyId The ID of the creature family.
+     */
     async getCreatureFamily(creatureFamilyId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-family/${creatureFamilyId}`,
@@ -34,6 +38,9 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns an index of creature types.
+     */
     async getCreatureTypesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/index`,
@@ -41,6 +48,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a creature type by ID.
+     *
+     * @param creatureTypeId The ID of the creature type.
+     */
     async getCreatureType(creatureTypeId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature-type/${creatureTypeId}`,
@@ -48,6 +60,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a creature by ID.
+     *
+     * @param creatureId The ID of the creature.
+     */
     async getCreature(creatureId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/creature/${creatureId}`,
@@ -55,6 +72,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for a creature display by ID.
+     *
+     * @param creatureDisplayId The ID of the creature display.
+     */
     async getCreatureDisplayMedia(creatureDisplayId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-display/${creatureDisplayId}`,
@@ -62,6 +84,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for a creature family by ID.
+     *
+     * @param creatureFamilyId The ID of the creature family.
+     */
     async getCreatureFamilyMedia(creatureFamilyId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/creature-family/${creatureFamilyId}`,
@@ -73,6 +100,9 @@ class WowClassicGameData {
      * Guild Crest API
      ****************************/
 
+    /**
+     * Returns an index of guild crest media.
+     */
     async getGuildCrestComponentsIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/index`,
@@ -80,6 +110,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for a guild crest border by ID.
+     *
+     * @param borderId The ID of the guild crest border.
+     */
     async getGuildCrestBorderMedia(borderId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/border/${borderId}`,
@@ -87,6 +122,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for a guild crest emblem by ID.
+     *
+     * @param emblemId The ID of the guild crest emblem.
+     */
     async getGuildCrestEmblemMedia(emblemId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/guild-crest/emblem/${emblemId}`,
@@ -98,6 +138,9 @@ class WowClassicGameData {
      * Item API
      ****************************/
 
+    /**
+     * Returns an index of item classes.
+     */
     async getItemClassesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/index`,
@@ -105,6 +148,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns an item class by ID.
+     *
+     * @param itemClassId The ID of the item class.
+     */
     async getItemClass(itemClassId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}`,
@@ -112,6 +160,12 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns an item subclass by ID.
+     *
+     * @param itemClassId The ID of the item class.
+     * @param itemSubclassId The ID of the item subclass.
+     */
     async getItemSubclass(itemClassId: string, itemSubclassId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item-class/${itemClassId}/item-subclass/${itemSubclassId}`,
@@ -119,6 +173,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns an item by ID.
+     *
+     * @param itemId The ID of the item.
+     */
     async getItem(itemId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/item/${itemId}`,
@@ -126,6 +185,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for an item by ID.
+     *
+     * @param itemId The ID of the item.
+     */
     async getItemMedia(itemId: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/item/${itemId}`,
@@ -137,6 +201,9 @@ class WowClassicGameData {
      * Playable Class API
      ****************************/
 
+    /**
+     * Returns an index of playable classes.
+     */
     async getPlayableClassIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-class/index`,
@@ -144,6 +211,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a playable class by ID.
+     *
+     * @param playableClassId The ID of the playable class.
+     */
     async getPlayableClass(playableClassId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-class/${playableClassId}`,
@@ -151,6 +223,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns media for a playable class by ID.
+     *
+     * @param playableClassId The ID of the playable class.
+     */
     async getPlayableClassMedia(playableClassId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/media/playable-class/${playableClassId}`,
@@ -162,6 +239,9 @@ class WowClassicGameData {
      * Playable Race API
      ****************************/
 
+    /**
+     * Returns an index of playable races.
+     */
     async getPlayableRaceIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-race/index`,
@@ -169,6 +249,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a playable race by ID.
+     *
+     * @param playableRaceId The ID of the playable race.
+     */
     async getPlayableRace(playableRaceId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-race/${playableRaceId}`,
@@ -180,6 +265,9 @@ class WowClassicGameData {
      * Power Type API
      ****************************/
 
+    /**
+     * Returns an index of power types.
+     */
     async getPowerTypesIndex(): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/power-type/index`,
@@ -187,6 +275,11 @@ class WowClassicGameData {
         );
     }
 
+    /**
+     * Returns a power type by ID.
+     *
+     * @param powerTypeId
+     */
     async getPowerType(powerTypeId: number): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/power-type/${powerTypeId}`,
@@ -204,7 +297,8 @@ class WowClassicGameData {
                 params: {
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
-                }});
+                }
+            });
             return response.data;
         } catch (error) {
             console.log(error);
