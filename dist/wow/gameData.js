@@ -317,6 +317,122 @@ class WowGameData {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/power-type/${powerTypeId}`, 'Error fetching specified power type.', this.staticNamespace);
         });
     }
+    /****************************
+     * PvP Season API
+     ****************************/
+    getPvpSeasonsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/index`, 'Error fetching pvp season index.', this.dynamicNamespace);
+        });
+    }
+    getPvpSeason(pvpSeasonId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}`, 'Error fetching specified pvp season.', this.dynamicNamespace);
+        });
+    }
+    getPvpLeaderboardsIndex(pvpSeasonId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/index`, 'Error fetching pvp season leaderboard index.', this.dynamicNamespace);
+        });
+    }
+    getPvpLeaderboard(pvpSeasonId, pvpBracket) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/${pvpBracket}`, 'Error fetching specified pvp season leaderboard.', this.dynamicNamespace);
+        });
+    }
+    getPvpRewardsIndex(pvpSeasonId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-reward/index`, 'Error fetching pvp reward index.', this.dynamicNamespace);
+        });
+    }
+    /****************************
+     * PvP Tier API
+     ****************************/
+    getPvpTierMedia(pvpTierId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/pvp-tier/${pvpTierId}`, 'Error fetching specified pvp tier media.', this.staticNamespace);
+        });
+    }
+    getPvpTiersIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-tier/index`, 'Error fetching pvp tier index.', this.staticNamespace);
+        });
+    }
+    getPvpTier(pvpTierId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pvp-tier/${pvpTierId}`, 'Error fetching specified pvp tier.', this.staticNamespace);
+        });
+    }
+    /****************************
+     * Realm API
+     ****************************/
+    getRealmsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/realm/index`, 'Error fetching realm index.', this.dynamicNamespace);
+        });
+    }
+    getRealm(realmSlug) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/realm/${realmSlug}`, 'Error fetching specified realm.', this.dynamicNamespace);
+        });
+    }
+    /****************************
+     * Region API
+     ****************************/
+    getRegionsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/region/index`, 'Error fetching region index.', this.dynamicNamespace);
+        });
+    }
+    getRegion(regionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/region/${regionId}`, 'Error fetching specified region.', this.dynamicNamespace);
+        });
+    }
+    /****************************
+     * Reputations API
+     ****************************/
+    getReputationFactionsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-faction/index`, 'Error fetching reputation faction index.', this.staticNamespace);
+        });
+    }
+    getReputationFaction(reputationFactionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-faction/${reputationFactionId}`, 'Error fetching specified reputation faction.', this.staticNamespace);
+        });
+    }
+    getReputationTiersIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-tiers/index`, 'Error fetching reputation faction index.', this.staticNamespace);
+        });
+    }
+    getReputationTiers(reputationTiersId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/reputation-tiers/${reputationTiersId}`, 'Error fetching specified reputation tiers.', this.staticNamespace);
+        });
+    }
+    /****************************
+     * Realm API
+     ****************************/
+    getTitlesIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/title/index`, 'Error fetching title index.', this.staticNamespace);
+        });
+    }
+    getTitle(titleId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/title/${titleId}`, 'Error fetching specified title.', this.staticNamespace);
+        });
+    }
+    /****************************
+     * WoW Token API
+     ****************************/
+    getWowTokenIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/token/index`, 'Error fetching token index.', this.dynamicNamespace);
+        });
+    }
     /********************************
      * Private Class Helper Functions
      ********************************/

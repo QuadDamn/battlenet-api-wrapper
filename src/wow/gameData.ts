@@ -482,6 +482,187 @@ class WowGameData {
         );
     }
 
+    /****************************
+     * PvP Season API
+     ****************************/
+
+    async getPvpSeasonsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-season/index`,
+            'Error fetching pvp season index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getPvpSeason(pvpSeasonId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}`,
+            'Error fetching specified pvp season.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getPvpLeaderboardsIndex(pvpSeasonId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/index`,
+            'Error fetching pvp season leaderboard index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getPvpLeaderboard(pvpSeasonId: number, pvpBracket: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-leaderboard/${pvpBracket}`,
+            'Error fetching specified pvp season leaderboard.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getPvpRewardsIndex(pvpSeasonId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-season/${pvpSeasonId}/pvp-reward/index`,
+            'Error fetching pvp reward index.',
+            this.dynamicNamespace
+        );
+    }
+
+    /****************************
+     * PvP Tier API
+     ****************************/
+
+    async getPvpTierMedia(pvpTierId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/pvp-tier/${pvpTierId}`,
+            'Error fetching specified pvp tier media.',
+            this.staticNamespace
+        );
+    }
+
+    async getPvpTiersIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-tier/index`,
+            'Error fetching pvp tier index.',
+            this.staticNamespace
+        );
+    }
+
+    async getPvpTier(pvpTierId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pvp-tier/${pvpTierId}`,
+            'Error fetching specified pvp tier.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
+     * Realm API
+     ****************************/
+
+    async getRealmsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/realm/index`,
+            'Error fetching realm index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getRealm(realmSlug: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/realm/${realmSlug}`,
+            'Error fetching specified realm.',
+            this.dynamicNamespace
+        );
+    }
+
+    /****************************
+     * Region API
+     ****************************/
+
+    async getRegionsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/region/index`,
+            'Error fetching region index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getRegion(regionId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/region/${regionId}`,
+            'Error fetching specified region.',
+            this.dynamicNamespace
+        );
+    }
+
+
+    /****************************
+     * Reputations API
+     ****************************/
+
+    async getReputationFactionsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/reputation-faction/index`,
+            'Error fetching reputation faction index.',
+            this.staticNamespace
+        );
+    }
+
+    async getReputationFaction(reputationFactionId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/reputation-faction/${reputationFactionId}`,
+            'Error fetching specified reputation faction.',
+            this.staticNamespace
+        );
+    }
+
+    async getReputationTiersIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/reputation-tiers/index`,
+            'Error fetching reputation faction index.',
+            this.staticNamespace
+        );
+    }
+
+    async getReputationTiers(reputationTiersId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/reputation-tiers/${reputationTiersId}`,
+            'Error fetching specified reputation tiers.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
+     * Realm API
+     ****************************/
+
+    async getTitlesIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/title/index`,
+            'Error fetching title index.',
+            this.staticNamespace
+        );
+    }
+
+    async getTitle(titleId: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/title/${titleId}`,
+            'Error fetching specified title.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
+     * WoW Token API
+     ****************************/
+
+    async getWowTokenIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/token/index`,
+            'Error fetching token index.',
+            this.dynamicNamespace
+        );
+    }
+
     /********************************
      * Private Class Helper Functions
      ********************************/
