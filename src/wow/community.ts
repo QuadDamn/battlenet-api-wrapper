@@ -342,6 +342,9 @@ class WowCommunity {
         );
     }
 
+    /****************************
+     * Zone API
+     ****************************/
 
     /**
      * Returns a list of all supported zones and their bosses. A "zone" in this context should be considered a
@@ -367,9 +370,109 @@ class WowCommunity {
         );
     }
 
+    /****************************
+     * Data Resources
+     ****************************/
 
+    /**
+     * Returns a list of battlegroups for the specified region.
+     */
+    async getBattlegroups(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/battleground/`,
+            'Error fetching region battlegrounds.'
+        );
+    }
 
+    /**
+     * Returns a list of races and their associated faction, name, unique ID, and skin.
+     */
+    async getCharacterRaces(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/character/races`,
+            'Error fetching character race list.'
+        );
+    }
 
+    /**
+     * Returns a list of character classes.
+     */
+    async getCharacterClasses(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/character/classes`,
+            'Error fetching character class list.'
+        );
+    }
+
+    /**
+     * Returns a list of all achievements that characters can earn as well as the category structure and hierarchy.
+     */
+    async getCharacterAchievements(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/character/achievements`,
+            'Error fetching character achievement list.'
+        );
+    }
+
+    /**
+     * The guild rewards data API provides a list of all guild rewards.
+     */
+    async getGuildRewards(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/guild/rewards`,
+            'Error fetching guild reward list.'
+        );
+    }
+
+    /**
+     * Returns a list of all guild perks.
+     */
+    async getGuildPerks(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/guild/perks`,
+            'Error fetching guild perk list.'
+        );
+    }
+
+    /**
+     * Returns a list of all guild achievements as well as the category structure and hierarchy.
+     */
+    async getGuildAchievements(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/guild/achievements`,
+            'Error fetching guild achievement list.'
+        );
+    }
+
+    /**
+     * Returns a list of item classes.
+     */
+    async getItemClasses(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/item/classes`,
+            'Error fetching item classes.'
+        );
+    }
+
+    /**
+     * Returns a list of talents, specs, and glyphs for each class.
+     */
+    async getTalents(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/talents`,
+            'Error fetching talent list.'
+        );
+    }
+
+    /**
+     * Returns a list of the different battle pet types, including what they are strong and weak against.
+     */
+    async getPetTypes(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/data/pet/types`,
+            'Error fetching pet type list.'
+        );
+    }
 
     /********************************
      * Private Class Helper Functions

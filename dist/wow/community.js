@@ -290,6 +290,9 @@ class WowCommunity {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/spell/${spellId}`, 'Error fetching specified spell.');
         });
     }
+    /****************************
+     * Zone API
+     ****************************/
     /**
      * Returns a list of all supported zones and their bosses. A "zone" in this context should be considered a
      * dungeon or a raid, not a world zone. A "boss" in this context should be considered a boss encounter,
@@ -308,6 +311,89 @@ class WowCommunity {
     getZone(zoneId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/zone`, 'Error fetching specified zone.');
+        });
+    }
+    /****************************
+     * Data Resources
+     ****************************/
+    /**
+     * Returns a list of battlegroups for the specified region.
+     */
+    getBattlegroups() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/battleground/`, 'Error fetching region battlegrounds.');
+        });
+    }
+    /**
+     * Returns a list of races and their associated faction, name, unique ID, and skin.
+     */
+    getCharacterRaces() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/character/races`, 'Error fetching character race list.');
+        });
+    }
+    /**
+     * Returns a list of character classes.
+     */
+    getCharacterClasses() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/character/classes`, 'Error fetching character class list.');
+        });
+    }
+    /**
+     * Returns a list of all achievements that characters can earn as well as the category structure and hierarchy.
+     */
+    getCharacterAchievements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/character/achievements`, 'Error fetching character achievement list.');
+        });
+    }
+    /**
+     * The guild rewards data API provides a list of all guild rewards.
+     */
+    getGuildRewards() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/guild/rewards`, 'Error fetching guild reward list.');
+        });
+    }
+    /**
+     * Returns a list of all guild perks.
+     */
+    getGuildPerks() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/guild/perks`, 'Error fetching guild perk list.');
+        });
+    }
+    /**
+     * Returns a list of all guild achievements as well as the category structure and hierarchy.
+     */
+    getGuildAchievements() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/guild/achievements`, 'Error fetching guild achievement list.');
+        });
+    }
+    /**
+     * Returns a list of item classes.
+     */
+    getItemClasses() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/item/classes`, 'Error fetching item classes.');
+        });
+    }
+    /**
+     * Returns a list of talents, specs, and glyphs for each class.
+     */
+    getTalents() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/talents`, 'Error fetching talent list.');
+        });
+    }
+    /**
+     * Returns a list of the different battle pet types, including what they are strong and weak against.
+     */
+    getPetTypes() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/data/pet/types`, 'Error fetching pet type list.');
         });
     }
     /********************************
