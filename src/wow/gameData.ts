@@ -19,6 +19,98 @@ class WowGameData {
     }
 
     /****************************
+     * Achievement API
+     ****************************/
+
+    async getAchievementCategoriesIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/achievement-category/index`,
+            'Error fetching achievement categories index.',
+            this.staticNamespace
+        );
+    }
+
+    async getAchievementCategory(achievementCategoryId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/achievement-category/${achievementCategoryId}`,
+            'Error fetching specified achievement category.',
+            this.staticNamespace
+        );
+    }
+
+    async getAchievementIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/achievement/index`,
+            'Error fetching achievement index.',
+            this.staticNamespace
+        );
+    }
+
+    async getAchievement(achievementId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/achievement/${achievementId}`,
+            'Error fetching specified achievement.',
+            this.staticNamespace
+        );
+    }
+
+    async getAchievementMedia(achievementId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/achievement/${achievementId}`,
+            'Error fetching specified achievement media.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
+     * Azerite Essence API
+     ****************************/
+
+    async getAzeriteEssenceIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/azerite-essence/index`,
+            'Error fetching azerite essence index.',
+            this.staticNamespace
+        );
+    }
+
+    async getAzeriteEssence(azeriteEssenceId: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/azerite-essence/${azeriteEssenceId}`,
+            'Error fetching specified azerite essence.',
+            this.staticNamespace
+        );
+    }
+
+    async getAzeriteEssenceMedia(azeriteEssenceId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/azerite-essence/${azeriteEssenceId}`,
+            'Error fetching specified azerite essence media.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
+     * Azerite Essence API
+     ****************************/
+
+    async getConnectedRealmsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/index`,
+            'Error fetching connected realm index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getConnectedRealm(connectedRealmId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}`,
+            'Error fetching specified connected realm.',
+            this.dynamicNamespace
+        );
+    }
+
+    /****************************
      * Creature API
      ****************************/
 
@@ -151,6 +243,158 @@ class WowGameData {
     }
 
     /****************************
+     * Mythic Keystone Affix API
+     ****************************/
+
+    async getMythicKeystoneAffixesIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/keystone-affix/index`,
+            'Error fetching mythic keystone affix index.',
+            this.staticNamespace
+        );
+    }
+
+    async getMythicKeystoneAffix(keystoneAffixId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/keystone-affix/${keystoneAffixId}`,
+            'Error fetching specified mythic keystone affix.',
+            this.staticNamespace
+        );
+    }
+
+    /*****************************
+     * Mythic Raid Leaderboard API
+     ****************************/
+
+    async getMythicRaidLeaderboard(raid: string, faction: string): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/leaderboard/hall-of-fame/${raid}/${faction}`,
+            'Error fetching specified mythic raid leaderboard.',
+            this.dynamicNamespace
+        );
+    }
+
+    /*****************************
+     * Mounts API
+     ****************************/
+
+    async getMountsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mount/index`,
+            'Error fetching mount index.',
+            this.staticNamespace
+        );
+    }
+
+    async getMount(mountId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mount/${mountId}`,
+            'Error fetching specified mount.',
+            this.staticNamespace
+        );
+    }
+
+    /*****************************
+     * Mythic Keystone Dungeon API
+     ****************************/
+
+    async getMythicKeystoneDungeonsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/dungeon/index`,
+            'Error fetching mythic keystone dungeon index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystoneDungeon(dungeonId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/dungeon/${dungeonId}`,
+            'Error fetching specified mythic keystone dungeon.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystoneIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/index`,
+            'Error fetching mythic keystone index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystonePeriodsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/period/index`,
+            'Error fetching mythic keystone periods index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystonePeriod(periodId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/period/${periodId}`,
+            'Error fetching specified mythic keystone period.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystoneSeasonsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/season/index`,
+            'Error fetching mythic keystone seasons index.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystoneSeason(seasonId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/mythic-keystone/season/${seasonId}`,
+            'Error fetching specified mythic keystone season.',
+            this.dynamicNamespace
+        );
+    }
+
+    /*********************************
+     * Mythic Keystone Leaderboard API
+     ********************************/
+
+    async getMythicKeystoneLeaderboardsIndex(connectedRealmId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/index`,
+            'Error fetching mythic keystone leaderboard index for specified connected realm.',
+            this.dynamicNamespace
+        );
+    }
+
+    async getMythicKeystoneLeaderboard(connectedRealmId: number, dungeonId: number, period: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/${dungeonId}/period/${period}`,
+            'Error fetching specified mythic keystone leaderboard for connected realm.',
+            this.dynamicNamespace
+        );
+    }
+
+    /*****************************
+     * Pets API
+     ****************************/
+
+    async getPetsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pet/index`,
+            'Error fetching pet index.',
+            this.staticNamespace
+        );
+    }
+
+    async getPet(petId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/pet/${petId}`,
+            'Error fetching specified pet.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
      * Playable Class API
      ****************************/
 
@@ -194,6 +438,26 @@ class WowGameData {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/playable-race/${playableRaceId}`,
             'Error fetching specified playable race.',
+            this.staticNamespace
+        );
+    }
+
+    /*****************************
+     * Playable Specialization API
+     ****************************/
+
+    async getPlayableSpecializationIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-specialization/index`,
+            'Error fetching playable specialization index.',
+            this.staticNamespace
+        );
+    }
+
+    async getPlayableSpecialization(playableSpecializationId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/playable-specialization/${playableSpecializationId}`,
+            'Error fetching specified playable specialization.',
             this.staticNamespace
         );
     }

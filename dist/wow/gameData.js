@@ -20,6 +20,65 @@ class WowGameData {
         this.dynamicNamespace = `dynamic-${origin}`;
     }
     /****************************
+     * Achievement API
+     ****************************/
+    getAchievementCategoriesIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/achievement-category/index`, 'Error fetching achievement categories index.', this.staticNamespace);
+        });
+    }
+    getAchievementCategory(achievementCategoryId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/achievement-category/${achievementCategoryId}`, 'Error fetching specified achievement category.', this.staticNamespace);
+        });
+    }
+    getAchievementIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/achievement/index`, 'Error fetching achievement index.', this.staticNamespace);
+        });
+    }
+    getAchievement(achievementId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/achievement/${achievementId}`, 'Error fetching specified achievement.', this.staticNamespace);
+        });
+    }
+    getAchievementMedia(achievementId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/achievement/${achievementId}`, 'Error fetching specified achievement media.', this.staticNamespace);
+        });
+    }
+    /****************************
+     * Azerite Essence API
+     ****************************/
+    getAzeriteEssenceIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/azerite-essence/index`, 'Error fetching azerite essence index.', this.staticNamespace);
+        });
+    }
+    getAzeriteEssence(azeriteEssenceId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/azerite-essence/${azeriteEssenceId}`, 'Error fetching specified azerite essence.', this.staticNamespace);
+        });
+    }
+    getAzeriteEssenceMedia(azeriteEssenceId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/azerite-essence/${azeriteEssenceId}`, 'Error fetching specified azerite essence media.', this.staticNamespace);
+        });
+    }
+    /****************************
+     * Azerite Essence API
+     ****************************/
+    getConnectedRealmsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/index`, 'Error fetching connected realm index.', this.dynamicNamespace);
+        });
+    }
+    getConnectedRealm(connectedRealmId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}`, 'Error fetching specified connected realm.', this.dynamicNamespace);
+        });
+    }
+    /****************************
      * Creature API
      ****************************/
     getCreatureFamiliesIndex() {
@@ -104,6 +163,104 @@ class WowGameData {
         });
     }
     /****************************
+     * Mythic Keystone Affix API
+     ****************************/
+    getMythicKeystoneAffixesIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/keystone-affix/index`, 'Error fetching mythic keystone affix index.', this.staticNamespace);
+        });
+    }
+    getMythicKeystoneAffix(keystoneAffixId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/keystone-affix/${keystoneAffixId}`, 'Error fetching specified mythic keystone affix.', this.staticNamespace);
+        });
+    }
+    /*****************************
+     * Mythic Raid Leaderboard API
+     ****************************/
+    getMythicRaidLeaderboard(raid, faction) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/leaderboard/hall-of-fame/${raid}/${faction}`, 'Error fetching specified mythic raid leaderboard.', this.dynamicNamespace);
+        });
+    }
+    /*****************************
+     * Mounts API
+     ****************************/
+    getMountsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mount/index`, 'Error fetching mount index.', this.staticNamespace);
+        });
+    }
+    getMount(mountId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mount/${mountId}`, 'Error fetching specified mount.', this.staticNamespace);
+        });
+    }
+    /*****************************
+     * Mythic Keystone Dungeon API
+     ****************************/
+    getMythicKeystoneDungeonsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/dungeon/index`, 'Error fetching mythic keystone dungeon index.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystoneDungeon(dungeonId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/dungeon/${dungeonId}`, 'Error fetching specified mythic keystone dungeon.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystoneIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/index`, 'Error fetching mythic keystone index.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystonePeriodsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/period/index`, 'Error fetching mythic keystone periods index.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystonePeriod(periodId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/period/${periodId}`, 'Error fetching specified mythic keystone period.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystoneSeasonsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/season/index`, 'Error fetching mythic keystone seasons index.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystoneSeason(seasonId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/mythic-keystone/season/${seasonId}`, 'Error fetching specified mythic keystone season.', this.dynamicNamespace);
+        });
+    }
+    /*********************************
+     * Mythic Keystone Leaderboard API
+     ********************************/
+    getMythicKeystoneLeaderboardsIndex(connectedRealmId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/index`, 'Error fetching mythic keystone leaderboard index for specified connected realm.', this.dynamicNamespace);
+        });
+    }
+    getMythicKeystoneLeaderboard(connectedRealmId, dungeonId, period) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/mythic-leaderboard/${dungeonId}/period/${period}`, 'Error fetching specified mythic keystone leaderboard for connected realm.', this.dynamicNamespace);
+        });
+    }
+    /*****************************
+     * Pets API
+     ****************************/
+    getPetsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pet/index`, 'Error fetching pet index.', this.staticNamespace);
+        });
+    }
+    getPet(petId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/pet/${petId}`, 'Error fetching specified pet.', this.staticNamespace);
+        });
+    }
+    /****************************
      * Playable Class API
      ****************************/
     getPlayableClassIndex() {
@@ -132,6 +289,19 @@ class WowGameData {
     getPlayableRace(playableRaceId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-race/${playableRaceId}`, 'Error fetching specified playable race.', this.staticNamespace);
+        });
+    }
+    /*****************************
+     * Playable Specialization API
+     ****************************/
+    getPlayableSpecializationIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-specialization/index`, 'Error fetching playable specialization index.', this.staticNamespace);
+        });
+    }
+    getPlayableSpecialization(playableSpecializationId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/playable-specialization/${playableSpecializationId}`, 'Error fetching specified playable specialization.', this.staticNamespace);
         });
     }
     /****************************
