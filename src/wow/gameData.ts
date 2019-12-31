@@ -5,7 +5,6 @@ import {AxiosInstance} from "axios";
 class WowGameData {
     private readonly axios: AxiosInstance;
     private readonly defaultAxiosParams: object;
-    private readonly origin: string;
     private readonly dynamicNamespace: string;
     private readonly staticNamespace: string;
     private readonly gameBaseUrlPath: string = '/data/wow';
@@ -13,7 +12,6 @@ class WowGameData {
     constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object, origin: string) {
         this.axios = axiosInstance;
         this.defaultAxiosParams = defaultAxiosParams;
-        this.origin = origin;
         this.staticNamespace = `static-${origin}`;
         this.dynamicNamespace = `dynamic-${origin}`;
     }

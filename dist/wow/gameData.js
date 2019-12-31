@@ -15,7 +15,6 @@ class WowGameData {
         this.gameBaseUrlPath = '/data/wow';
         this.axios = axiosInstance;
         this.defaultAxiosParams = defaultAxiosParams;
-        this.origin = origin;
         this.staticNamespace = `static-${origin}`;
         this.dynamicNamespace = `dynamic-${origin}`;
     }
