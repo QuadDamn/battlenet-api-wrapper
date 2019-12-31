@@ -4,13 +4,11 @@ import {AxiosInstance} from "axios";
 
 class HearthstoneGameData {
     private readonly axios: AxiosInstance;
-    private readonly locale: string;
     private readonly defaultAxiosParams: object;
     private readonly gameBaseUrlPath: string = '/hearthstone';
 
-    constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object, locale: string) {
+    constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object) {
         this.axios = axiosInstance;
-        this.locale = locale;
         this.defaultAxiosParams = defaultAxiosParams;
     }
 

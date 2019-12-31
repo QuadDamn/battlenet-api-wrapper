@@ -11,10 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 class Starcraft2Community {
-    constructor(axiosInstance, locale) {
+    constructor(axiosInstance) {
         this.gameBaseUrlPath = '/sc2';
         this.axios = axiosInstance;
-        this.locale = locale;
     }
     /****************************
      * Profile API

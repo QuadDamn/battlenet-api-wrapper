@@ -92,11 +92,11 @@ class BattleNetWrapper {
             console.log(error);
         }
 
-        this.Diablo3Community = new Diablo3Community(this.axios, this.locale);
-        this.Diablo3GameData = new Diablo3GameData(this.axios, this.origin);
-        this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.defaultAxiosParams, this.origin);
-        this.Starcraft2Community = new Starcraft2Community(this.axios, this.origin);
-        this.Starcraft2GameData = new Starcraft2GameData(this.axios, this.origin);
+        this.Diablo3Community = new Diablo3Community(this.axios);
+        this.Diablo3GameData = new Diablo3GameData(this.axios);
+        this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.defaultAxiosParams);
+        this.Starcraft2Community = new Starcraft2Community(this.axios);
+        this.Starcraft2GameData = new Starcraft2GameData(this.axios);
         // this.WowCommunity = new WowCommunity(this.axios, this.origin);
         this.WowGameData = new WowGameData(this.axios, this.defaultAxiosParams, this.origin);
         this.WowProfileData = new WowProfileData(this.axios, this.defaultAxiosParams, this.origin);
@@ -106,7 +106,7 @@ class BattleNetWrapper {
     /**
      * Gets a new access token for all of the subsequent API requests.
      * Every invocation of this class will create a new access token,
-     * so you should never have to worry about the a token ever expiring.
+     * so you should never have to worry about the token ever expiring.
      *
      * @private
      */
@@ -125,7 +125,8 @@ class BattleNetWrapper {
             this.oauthToken = response.data.access_token;
         } catch (error) {
             console.log(error);
-            throw new Error('Problem getting the OAuth token from the Blizzard API.');
+            throw new Error(`Problem getting the OAuth token from the Blizzard API.  
+                            Please check that your Client ID and Secret are correct.`);
         }
     }
 }

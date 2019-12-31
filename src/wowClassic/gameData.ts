@@ -5,14 +5,12 @@ import {AxiosInstance} from "axios";
 class WowClassicGameData {
     private readonly axios: AxiosInstance;
     private readonly defaultAxiosParams: object;
-    private readonly origin: string;
     private readonly namespace: string;
     private readonly gameBaseUrlPath: string = '/data/wow';
 
     constructor(axiosInstance: AxiosInstance, defaultAxiosParams: object, origin: string) {
         this.axios = axiosInstance;
         this.defaultAxiosParams = defaultAxiosParams;
-        this.origin = origin;
         this.namespace = `static-classic-${origin}`;
     }
 

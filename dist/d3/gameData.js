@@ -11,10 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 class Diablo3GameData {
-    constructor(axiosInstance, locale) {
+    constructor(axiosInstance) {
         this.gameBaseUrlPath = '/data/d3';
         this.axios = axiosInstance;
-        this.locale = locale;
     }
     getSeasonIndex() {
         return __awaiter(this, void 0, void 0, function* () {

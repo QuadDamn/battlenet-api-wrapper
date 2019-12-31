@@ -81,11 +81,11 @@ class BattleNetWrapper {
             catch (error) {
                 console.log(error);
             }
-            this.Diablo3Community = new community_1.default(this.axios, this.locale);
-            this.Diablo3GameData = new gameData_1.default(this.axios, this.origin);
-            this.HearthstoneGameData = new gameData_2.default(this.axios, this.defaultAxiosParams, this.origin);
-            this.Starcraft2Community = new community_2.default(this.axios, this.origin);
-            this.Starcraft2GameData = new gameData_3.default(this.axios, this.origin);
+            this.Diablo3Community = new community_1.default(this.axios);
+            this.Diablo3GameData = new gameData_1.default(this.axios);
+            this.HearthstoneGameData = new gameData_2.default(this.axios, this.defaultAxiosParams);
+            this.Starcraft2Community = new community_2.default(this.axios);
+            this.Starcraft2GameData = new gameData_3.default(this.axios);
             // this.WowCommunity = new WowCommunity(this.axios, this.origin);
             this.WowGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
             this.WowProfileData = new profileData_1.default(this.axios, this.defaultAxiosParams, this.origin);
@@ -95,7 +95,7 @@ class BattleNetWrapper {
     /**
      * Gets a new access token for all of the subsequent API requests.
      * Every invocation of this class will create a new access token,
-     * so you should never have to worry about the a token ever expiring.
+     * so you should never have to worry about the token ever expiring.
      *
      * @private
      */
@@ -115,7 +115,8 @@ class BattleNetWrapper {
             }
             catch (error) {
                 console.log(error);
-                throw new Error('Problem getting the OAuth token from the Blizzard API.');
+                throw new Error(`Problem getting the OAuth token from the Blizzard API.  
+                            Please check that your Client ID and Secret are correct.`);
             }
         });
     }

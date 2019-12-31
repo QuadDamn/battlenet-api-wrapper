@@ -5,12 +5,10 @@ import {formatBattleTag} from '../utils';
 
 class Diablo3Community {
     private readonly axios: AxiosInstance;
-    private readonly locale: string;
     private readonly gameBaseUrlPath: string = '/d3/data';
 
-    constructor(axiosInstance: AxiosInstance, locale: string) {
+    constructor(axiosInstance: AxiosInstance) {
         this.axios = axiosInstance;
-        this.locale = locale;
     }
 
     /****************************

@@ -4,12 +4,10 @@ import {AxiosInstance} from "axios";
 
 class Starcraft2GameData {
     private readonly axios: AxiosInstance;
-    private readonly locale: string;
     private readonly gameBaseUrlPath: string = '/data/sc2';
 
-    constructor(axiosInstance: AxiosInstance, locale: string) {
+    constructor(axiosInstance: AxiosInstance) {
         this.axios = axiosInstance;
-        this.locale = locale;
     }
 
     /**

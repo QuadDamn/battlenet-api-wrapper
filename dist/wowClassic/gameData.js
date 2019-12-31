@@ -15,7 +15,6 @@ class WowClassicGameData {
         this.gameBaseUrlPath = '/data/wow';
         this.axios = axiosInstance;
         this.defaultAxiosParams = defaultAxiosParams;
-        this.origin = origin;
         this.namespace = `static-classic-${origin}`;
     }
     /**
