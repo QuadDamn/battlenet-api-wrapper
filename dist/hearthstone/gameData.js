@@ -36,6 +36,11 @@ class HearthstoneGameData {
     //         throw new Error('Error fetching the season index.');
     //     }
     // }
+    /**
+     * Returns the card with an ID or slug that matches the one you specify.
+     *
+     * @param cardSlug An ID or slug that uniquely identifies a card. You can discover these values by using the `/hearthstone/cards` search endpoint.
+     */
     getCard(cardSlug) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/cards/${cardSlug}`, 'Error fetching the specified card.');
@@ -44,6 +49,11 @@ class HearthstoneGameData {
     /****************************
      * Decks API
      ****************************/
+    /**
+     * Finds a deck by its deck code.
+     *
+     * @param deckCode A code that identifies a deck. You can copy one from the game or various Hearthstone websites.
+     */
     getDeck(deckCode) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/deck/${deckCode}`, 'Error fetching the specified deck.');
@@ -52,11 +62,21 @@ class HearthstoneGameData {
     /****************************
      * Metadata API
      ****************************/
+    /**
+     * Returns information about the categorization of cards. Metadata includes the card set,
+     * set group (for example, Standard or Year of the Dragon), rarity, class, card type, minion type, and keywords.
+     */
     getMetadata() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/metadata`, 'Error fetching the metadata.');
         });
     }
+    /**
+     * Returns information about just one type of metadata.
+     *
+     * @param type The type of the metadata to retrieve. Valid values include sets, setGroups, types,
+     * rarities, classes, minionTypes, and keywords.
+     */
     getSpecificMetadata(type) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/metadata/${type}`, 'Error fetching the specified metadata.');
