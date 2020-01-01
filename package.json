@@ -10,6 +10,10 @@
     "watch:server": "nodemon './dist/battleNetWrapper.js' --watch './dist'",
     "start": "npm-run-all clean build --parallel watch:build watch:server --print-label"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QuadDamn/battlenet-api-wrapper.git"
+  },
   "author": "Shane Jeffery",
   "license": "MIT",
   "devDependencies": {
