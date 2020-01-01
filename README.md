@@ -16,7 +16,7 @@ A promised-based Node.js wrapper for the Battle.net Community and Data APIs (sup
 The basic implementation of this library is as follows:
 
 ```
-const battleNetWrapper = require('./dist/battleNetWrapper');  
+const battleNetWrapper = require('battlenet-api-wrapper');  
   
 const clientId = 'YOUR_CLIENT_ID';  
 const clientSecret = 'YOUR_CLIENT_SECRET';  

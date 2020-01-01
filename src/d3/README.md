@@ -4,7 +4,7 @@ In order to use these functions, you will need to have initialized the BattleNet
   
 ***Example implementation:***  
 ```  
-const battleNetWrapper = require('./dist/battleNetWrapper');  
+const battleNetWrapper = require('battlenet-api-wrapper');  
   
 const clientId = 'YOUR_CLIENT_ID';  
 const clientSecret = 'YOUR_CLIENT_SECRET';  
@@ -185,7 +185,7 @@ In order to use these functions, you will need to have initialized the BattleNet
   
 ***Example implementation:***  
 ```  
-const battleNetWrapper = require('./dist/battleNetWrapper');  
+const battleNetWrapper = require('battlenet-api-wrapper');  
   
 const clientId = 'YOUR_CLIENT_ID';  
 const clientSecret = 'YOUR_CLIENT_SECRET';  
