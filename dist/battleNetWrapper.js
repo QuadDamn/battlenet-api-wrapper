@@ -15,9 +15,10 @@ const gameData_1 = require("./d3/gameData");
 const gameData_2 = require("./hearthstone/gameData");
 const community_2 = require("./sc2/community");
 const gameData_3 = require("./sc2/gameData");
-const gameData_4 = require("./wowClassic/gameData");
 const profileData_1 = require("./wow/profileData");
-const gameData_5 = require("./wow/gameData");
+const gameData_4 = require("./wow/gameData");
+const community_3 = require("./wow/community");
+const gameData_5 = require("./wowClassic/gameData");
 class BattleNetWrapper {
     // Unused constructor as we needed the ability to async the initialization
     // and await all of the underlying promises.
@@ -86,19 +87,15 @@ class BattleNetWrapper {
             this.HearthstoneGameData = new gameData_2.default(this.axios, this.defaultAxiosParams);
             this.Starcraft2Community = new community_2.default(this.axios);
             this.Starcraft2GameData = new gameData_3.default(this.axios);
-            // this.WowCommunity = new WowCommunity(this.axios, this.origin);
-            this.WowGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
+            this.WowCommunity = new community_3.default(this.axios, this.defaultAxiosParams);
+            this.WowGameData = new gameData_4.default(this.axios, this.defaultAxiosParams, this.origin);
             this.WowProfileData = new profileData_1.default(this.axios, this.defaultAxiosParams, this.origin);
-            this.WowClassicGameData = new gameData_4.default(this.axios, this.defaultAxiosParams, this.origin);
+            this.WowClassicGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
         });
     }
-    /**
-     * Gets a new access token for all of the subsequent API requests.
-     * Every invocation of this class will create a new access token,
-     * so you should never have to worry about the token ever expiring.
-     *
-     * @private
-     */
+    // Gets a new access token for all of the subsequent API requests.
+    // Every invocation of this class will create a new access token,
+    // so you should never have to worry about the token ever expiring.
     _getToken() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

@@ -5,9 +5,10 @@ import Diablo3GameData from './d3/gameData';
 import HearthstoneGameData from './hearthstone/gameData';
 import Starcraft2Community from './sc2/community';
 import Starcraft2GameData from './sc2/gameData';
-import WowClassicGameData from './wowClassic/gameData';
 import WowProfileData from './wow/profileData';
 import WowGameData from './wow/gameData';
+import WowCommunity from './wow/community';
+import WowClassicGameData from './wowClassic/gameData';
 
 class BattleNetWrapper {
 
@@ -97,19 +98,15 @@ class BattleNetWrapper {
         this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.defaultAxiosParams);
         this.Starcraft2Community = new Starcraft2Community(this.axios);
         this.Starcraft2GameData = new Starcraft2GameData(this.axios);
-        // this.WowCommunity = new WowCommunity(this.axios, this.origin);
+        this.WowCommunity = new WowCommunity(this.axios, this.defaultAxiosParams);
         this.WowGameData = new WowGameData(this.axios, this.defaultAxiosParams, this.origin);
         this.WowProfileData = new WowProfileData(this.axios, this.defaultAxiosParams, this.origin);
         this.WowClassicGameData = new WowClassicGameData(this.axios, this.defaultAxiosParams, this.origin);
     }
 
-    /**
-     * Gets a new access token for all of the subsequent API requests.
-     * Every invocation of this class will create a new access token,
-     * so you should never have to worry about the token ever expiring.
-     *
-     * @private
-     */
+    // Gets a new access token for all of the subsequent API requests.
+    // Every invocation of this class will create a new access token,
+    // so you should never have to worry about the token ever expiring.
     async _getToken() {
         try {
             const response = await axios.get(`https://${this.origin}.battle.net/oauth/token`, {
