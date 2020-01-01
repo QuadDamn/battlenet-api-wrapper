@@ -1,5 +1,7 @@
 # Battle.net API Wrapper
 
+A promised-based Node.js wrapper for the Battle.net Community and Data APIs (supports WoW, WoW Classic, SC2, D3, and Hearthstone).
+
 ## Installation
 
 `$ npm install --save battlenet-api-wrapper`
