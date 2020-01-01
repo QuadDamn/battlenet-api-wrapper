@@ -20,30 +20,18 @@ const clientSecret = 'YOUR_CLIENT_SECRET';
   
 -   [getActIndex][1]  
 -   [getAct][2]  
-    -   [Parameters][3]  
 -   [getArtisan][4]  
-    -   [Parameters][5]  
 -   [getRecipe][6]  
-    -   [Parameters][7]  
 -   [getFollower][8]  
-    -   [Parameters][9]  
 -   [getCharacterClass][10]  
-    -   [Parameters][11]  
 -   [getApiSkill][12]  
-    -   [Parameters][13]  
 -   [getItemTypeIndex][14]  
 -   [getItemType][15]  
-    -   [Parameters][16]  
 -   [getItem][17]  
-    -   [Parameters][18]  
 -   [getApiAccount][19]  
-    -   [Parameters][20]  
--   [getApiHero][21]  
-    -   [Parameters][22]  
--   [getApiDetailedHeroItems][23]  
-    -   [Parameters][24]  
+-   [getApiHero][21]   
+-   [getApiDetailedHeroItems][23]    
 -   [getApiDetailedFollowerItems][25]  
-    -   [Parameters][26]
 
 ### getActIndex  
   
@@ -212,15 +200,11 @@ const clientSecret = 'YOUR_CLIENT_SECRET';
 **Available Functions**  
   
 -   [getSeasonIndex][27]  
--   [getSeason][28]  
-    -   [Parameters][29]  
+-   [getSeason][28]   
 -   [getSeasonLeaderboard][30]  
-    -   [Parameters][31]  
 -   [getEraIndex][32]  
--   [getEra][33]  
-    -   [Parameters][34]  
+-   [getEra][33]   
 -   [getEraLeaderboard][35]  
-    -   [Parameters][36]
 
 ### getSeasonIndex  
   
