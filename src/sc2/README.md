@@ -211,8 +211,9 @@ Returns data for the specified season, queue, team, and league.
   
 Note that other available queues may not be listed here.  
   
-**teamType**: there are two available teamTypes: `0`=arranged, `1`=random. **leagueId**:  
-available leagueIds are: `0`=Bronze, `1`=Silver, `2`=Gold, `3`=Platinum, `4`=Diamond, `5`=Master, `6`=Grandmaster.  
+**teamType**: there are two available teamTypes: `0`=arranged, `1`=random.
+ 
+**leagueId**: available leagueIds are: `0`=Bronze, `1`=Silver, `2`=Gold, `3`=Platinum, `4`=Diamond, `5`=Master, `6`=Grandmaster.  
   
 #### Parameters  
   
