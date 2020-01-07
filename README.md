@@ -51,7 +51,6 @@ Feel free!  [Create a Pull Request](https://github.com/QuadDamn/battlenet-api-wr
 
 ## Todos
 
-- Finish up the Hearthstone Search Cards API abstraction.
 - Add in test coverage.
 
 ## License
