@@ -4,12 +4,18 @@
     
 ***Example implementation:*** 
 
-``` const battleNetWrapper = require('battlenet-api-wrapper');     
- const clientId = 'YOUR_CLIENT_ID'; const clientSecret = 'YOUR_CLIENT_SECRET';    
- (async function() {    
-   const bnw = new battleNetWrapper();    
-   await bnw.init(clientId, clientSecret);    
-const data = await bnw.HearthstoneGameData.searchCards({ class: 'mage', page: 1, pageSize: 3 }); }()); 
+``` 
+
+const battleNetWrapper = require('battlenet-api-wrapper');
+    
+const clientId = 'YOUR_CLIENT_ID'; 
+const clientSecret = 'YOUR_CLIENT_SECRET';    
+
+(async function() {    
+    const bnw = new battleNetWrapper();    
+    await bnw.init(clientId, clientSecret);    
+    const data = await bnw.HearthstoneGameData.searchCards({ class: 'mage', page: 1, pageSize: 3 }); 
+}()); 
 ```   
   
 **Available Functions**   
