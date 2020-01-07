@@ -4,8 +4,7 @@
     
 ***Example implementation:*** 
 
-``` 
-
+```
 const battleNetWrapper = require('battlenet-api-wrapper');
     
 const clientId = 'YOUR_CLIENT_ID'; 
