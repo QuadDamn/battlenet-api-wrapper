@@ -19,22 +19,25 @@ class HearthstoneGameData {
     /****************************
      * Cards API
      ****************************/
-    // async searchCards(defaultParams: object, set: string, classSlug: string, manaCost: string, attack: string, health: string,
-    //                   collectible: string, rarity: string, type: string, minionType: string, keyword: string, textFilter: string,
-    //                   page: number, pageSize: number, sort: string, order: string): Promise<object> {
-    //     try {
-    //         const response = await this.axios.get(`${this.gameBaseUrlPath}/cards`, {
-    //
-    //
-    //             ...this.defaultAxiosParams
-    //
-    //         });
-    //         return response.data;
-    //     } catch (error) {
-    //         console.log(error);
-    //         throw new Error('Error fetching the season index.');
-    //     }
-    // }
+    /**
+     * Returns all of the cards that match the passed parameters.
+     *
+     * @param searchParams
+     */
+    searchCards(searchParams) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.axios.get(`${this.gameBaseUrlPath}/cards`, {
+                    params: Object.assign(Object.assign({}, searchParams), this.defaultAxiosParams)
+                });
+                return response.data;
+            }
+            catch (error) {
+                console.log(error);
+                throw new Error('Error fetching cards that matched the passed parameters.');
+            }
+        });
+    }
     /**
      * Returns the card with an ID or slug that matches the one you specify.
      *

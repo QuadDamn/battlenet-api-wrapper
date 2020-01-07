@@ -11,7 +11,6 @@ import WowCommunity from './wow/community';
 import WowClassicGameData from './wowClassic/gameData';
 
 class BattleNetWrapper {
-
     public WowCommunity: object;
     public WowGameData: object;
     public WowProfileData: object;
@@ -21,7 +20,6 @@ class BattleNetWrapper {
     public Starcraft2GameData: object;
     public Diablo3Community: object;
     public Diablo3GameData: object;
-
     private clientId: string;
     private clientSecret: string;
     private origin: string;
