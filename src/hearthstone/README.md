@@ -2,17 +2,24 @@
 ## Hearthstone Game Data  
   In order to use these functions, you will need to have initialized the BattleNetWrapper class and then you can use these functions.    
     
-***Example implementation:*** ``` const battleNetWrapper = require('battlenet-api-wrapper');     
+***Example implementation:*** 
+
+``` const battleNetWrapper = require('battlenet-api-wrapper');     
  const clientId = 'YOUR_CLIENT_ID'; const clientSecret = 'YOUR_CLIENT_SECRET';    
  (async function() {    
    const bnw = new battleNetWrapper();    
    await bnw.init(clientId, clientSecret);    
-const data = await bnw.HearthstoneGameData.searchCards({ class: 'mage', page: 1, pageSize: 3 }); }()); ```   
+const data = await bnw.HearthstoneGameData.searchCards({ class: 'mage', page: 1, pageSize: 3 }); }()); 
+```   
   
-  **Available Functions**   
-  
-- [getCard][37] - [getDeck][39] - [getMetadata][41] - [getSpecificMetadata][42]  
-  
+**Available Functions**   
+
+- [searchCards][36]
+- [getCard][37] 
+- [getDeck][39] 
+- [getMetadata][41] 
+- [getSpecificMetadata][42]  
+
 ### searchCards  
   
 Returns all of the cards that match the passed parameters.  
