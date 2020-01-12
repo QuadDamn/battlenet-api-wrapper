@@ -1,6 +1,7 @@
 // Diablo 3 Game Data API documentation: https://develop.battle.net/documentation/diablo-3/game-data-apis
 
 import {AxiosInstance} from "axios";
+import {ISeasonIndex, ISeason, ISeasonLeaderboard, IEraIndex, IEra, IEraLeaderboard} from "types/d3GameData";
 
 class Diablo3GameData {
     private readonly axios: AxiosInstance;
@@ -13,11 +14,14 @@ class Diablo3GameData {
     /**
      * Returns an index of available seasons.
      */
-    async getSeasonIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/season`,
-            'Error fetching the season index.'
-        );
+    async getSeasonIndex(): Promise<ISeasonIndex> {
+        try {
+            const response = await this.axios.get<ISeasonIndex>(encodeURI(`${this.gameBaseUrlPath}/season`));
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the season index.`);
+        }
     }
 
     /**
@@ -25,11 +29,14 @@ class Diablo3GameData {
      *
      * @param seasonId The season for the leaderboard list; get a list of seasons with `getSeasonIndex`.
      */
-    async getSeason(seasonId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/season/${seasonId}`,
-            'Error fetching the specified season.'
-        );
+    async getSeason(seasonId: number): Promise<ISeason> {
+        try {
+            const response = await this.axios.get<ISeason>(encodeURI(`${this.gameBaseUrlPath}/season/${seasonId}`));
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the specified season.`);
+        }
     }
 
     /**
@@ -38,21 +45,27 @@ class Diablo3GameData {
      * @param seasonId The season for the leaderboard; get a list of seasons with `getSeasonIndex`.
      * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getSeason`.
      */
-    async getSeasonLeaderboard(seasonId: number, leaderboardId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`,
-            'Error fetching the specified season leaderboard.'
-        );
+    async getSeasonLeaderboard(seasonId: number, leaderboardId: string): Promise<ISeasonLeaderboard> {
+        try {
+            const response = await this.axios.get<ISeasonLeaderboard>(encodeURI(`${this.gameBaseUrlPath}/season/${seasonId}/leaderboard/${leaderboardId}`));
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the specified season leaderboard.`);
+        }
     }
 
     /**
      * Returns an index of available eras.
      */
-    async getEraIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/era`,
-            'Error fetching the era index.'
-        );
+    async getEraIndex(): Promise<IEraIndex> {
+        try {
+            const response = await this.axios.get<IEraIndex>(encodeURI(`${this.gameBaseUrlPath}/era`));
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the era index.`);
+        }
     }
 
     /**
@@ -60,11 +73,14 @@ class Diablo3GameData {
      *
      * @param eraId The era to retrieve; get a list of eras with `getEraIndex`.
      */
-    async getEra(eraId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/era/${eraId}`,
-            'Error fetching the specified era.'
-        );
+    async getEra(eraId: number): Promise<IEra> {
+        try {
+            const response = await this.axios.get<IEra>(encodeURI(`${this.gameBaseUrlPath}/era/${eraId}`));
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the specified era.`);
+        }
     }
 
     /**
@@ -73,24 +89,13 @@ class Diablo3GameData {
      * @param eraId The era for the leaderboard; get a list of eras with `getEraIndex`.
      * @param leaderboardId The leaderboard to retrieve; get a list of leaderboards with `getEra`.
      */
-    async getEraLeaderboard(eraId: number, leaderboardId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`,
-            'Error fetching the specified era leaderboard.'
-        );
-    }
-
-    /********************************
-     * Private Class Helper Functions
-     ********************************/
-
-    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
+    async getEraLeaderboard(eraId: number, leaderboardId: string): Promise<IEraLeaderboard> {
         try {
-            const response = await this.axios.get(encodeURI(apiUrl));
+            const response = await this.axios.get<IEraLeaderboard>(encodeURI(`${this.gameBaseUrlPath}/era/${eraId}/leaderboard/${leaderboardId}`));
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error(`Diablo 3 Game Data Error :: ${errorMessage}`);
+            throw new Error(`Diablo 3 Game Data Error :: Error fetching the specified era leaderboard.`);
         }
     }
 }

@@ -118,4 +118,4 @@ class BattleNetWrapper {
         });
     }
 }
-module.exports = BattleNetWrapper;
+exports.default = BattleNetWrapper;

@@ -126,4 +126,4 @@ class BattleNetWrapper {
     }
 }
 
-module.exports = BattleNetWrapper;
+export default BattleNetWrapper;
