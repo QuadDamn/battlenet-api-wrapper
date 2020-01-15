@@ -1,5 +1,3 @@
-import {IClassSkill} from "types/d3Community";
-
 declare module "types/d3Community" {
 
     interface IQuests {
@@ -231,5 +229,33 @@ declare module "types/d3Community" {
         lastUpdated: number,
         highestSoloRiftCompleted: number,
         stats: object
+    }
+
+    export interface IHeroItem {
+        id: string,
+        name: string,
+        icon: string,
+        displayColor: string,
+        tooltipParams: string,
+        requiredLevel: number,
+        itemLevel: number,
+        stackSizeMax: number,
+        accountBound: boolean,
+        flavorText: string,
+        typeName: string,
+        type: object,
+        armor: number,
+        attacksPerSecond: number,
+        minDamage: number,
+        maxDamage: number,
+        slots: string,
+        augmentation: string,
+        attributes: object,
+        attributesHtml: object,
+        openSockets: number,
+        gems: object[],
+        set: object,
+        seasonRequiredToDrop: number,
+        isSeasonRequiredToDrop: boolean
     }
 }
