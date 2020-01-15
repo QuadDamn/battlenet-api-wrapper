@@ -11,7 +11,9 @@ import {
     ICharacterClass,
     IApiSkill,
     IItemType,
-    IItem, IApiAccount, IApiHero
+    IItem,
+    IApiAccount,
+    IApiHero
 } from 'types/d3Community';
 
 class Diablo3Community {

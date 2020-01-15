@@ -1,7 +1,14 @@
 // Diablo 3 Game Data API documentation: https://develop.battle.net/documentation/diablo-3/game-data-apis
 
 import {AxiosInstance} from "axios";
-import {ISeasonIndex, ISeason, ISeasonLeaderboard, IEraIndex, IEra, IEraLeaderboard} from "types/d3GameData";
+import {
+    ISeasonIndex,
+    ISeason,
+    ISeasonLeaderboard,
+    IEraIndex,
+    IEra,
+    IEraLeaderboard
+} from "types/d3GameData";
 
 class Diablo3GameData {
     private readonly axios: AxiosInstance;
