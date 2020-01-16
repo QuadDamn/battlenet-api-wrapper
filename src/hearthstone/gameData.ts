@@ -17,9 +17,6 @@ import {
     IMetadataClass,
     IMetadataMinionType, IMetadataGameMode, IMetadataCardBackCategory
 } from "types/hearthstoneGameData";
-import {IActIndex} from "types/d3Community";
-
-
 
 class HearthstoneGameData {
     private readonly axios: AxiosInstance;
