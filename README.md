@@ -34,7 +34,6 @@ documentation.  Each of functions are available on the respective class objects.
 - `bnw.Diablo3Community` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/d3#diablo-3-community)
 - `bnw.Diablo3GameData` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/d3#diablo-3-game-data)
 - `bnw.HearthstoneGameData` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/hearthstone#hearthstone-game-data)
-- `bnw.Starcraft2Community` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/sc2#starcraft-2-community)
 - `bnw.Starcraft2GameData` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/sc2#starcraft-2-game-data)
 - `bnw.WowCommunity` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/wow#wow-community)
 - `bnw.WowGameData` [Usage Documentation](https://github.com/QuadDamn/battlenet-api-wrapper/tree/master/src/wow#wow-game-data)
