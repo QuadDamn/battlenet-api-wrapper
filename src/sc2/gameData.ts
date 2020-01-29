@@ -1,6 +1,9 @@
 // Starcraft 2 Game Data API documentation: https://develop.battle.net/documentation/starcraft-2/game-data-apis
 
 import {AxiosInstance} from "axios";
+import {
+    ILeagueData
+} from "types/sc2GameData";
 
 class Starcraft2GameData {
     private readonly axios: AxiosInstance;
@@ -27,24 +30,13 @@ class Starcraft2GameData {
      * @param teamType The team type of the data to retrieve.
      * @param leagueId The league ID of the data to retrieve.
      */
-    async getLeagueData(seasonId: string, queueId: string, teamType: string, leagueId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`,
-            'Error fetching the league data.'
-        );
-    }
-
-    /********************************
-     * Private Class Helper Functions
-     ********************************/
-
-    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
+    async getLeagueData(seasonId: string, queueId: string, teamType: string, leagueId: string): Promise<ILeagueData> {
         try {
-            const response = await this.axios.get(encodeURI(apiUrl));
+            const response = await this.axios.get<ILeagueData>(encodeURI(`${this.gameBaseUrlPath}/league/${seasonId}/${queueId}/${teamType}/${leagueId}`));
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error(`Starcraft 2 Game Data Error :: ${errorMessage}`);
+            throw new Error(`Starcraft 2 Game Data Error :: Error fetching the league data.`);
         }
     }
 }

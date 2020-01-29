@@ -1,6 +1,29 @@
 // WoW Classic Game Data API documentation: https://develop.battle.net/documentation/world-of-warcraft-classic/game-data-apis
 
 import {AxiosInstance} from "axios";
+import {
+    ICreatureFamily,
+    ICreatureFamilies,
+    IDefaultStruct,
+    ICreatureTypes,
+    ICreature,
+    ICreatureDisplayMedia,
+    ICreatureFamilyMedia,
+    IGuildCrestComponents,
+    IGuildCrestBorderMedia,
+    IGuildCrestEmblemMedia,
+    IItemSubclass,
+    IItemMedia,
+    IItemClass,
+    IItemClasses,
+    IPlayableClass,
+    IPlayableClasses,
+    IPlayableClassMedia,
+    IPlayableRace,
+    IPlayableRaces,
+    IPowerType,
+    IPowerTypes
+} from "types/wowClassicGameData";
 
 class WowClassicGameData {
     private readonly axios: AxiosInstance;
@@ -17,11 +40,19 @@ class WowClassicGameData {
     /**
      * Returns an index of creature families.
      */
-    async getCreatureFamiliesIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/creature-family/index`,
-            'Error fetching creature families index.'
-        );
+    async getCreatureFamiliesIndex(): Promise<ICreatureFamilies> {
+        try {
+            const response = await this.axios.get<ICreatureFamilies>(encodeURI(`${this.gameBaseUrlPath}/creature-family/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching creature families index.`);
+        }
     }
 
     /**
@@ -29,21 +60,37 @@ class WowClassicGameData {
      *
      * @param creatureFamilyId The ID of the creature family.
      */
-    async getCreatureFamily(creatureFamilyId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/creature-family/${creatureFamilyId}`,
-            'Error fetching specified creature family.'
-        );
+    async getCreatureFamily(creatureFamilyId: number): Promise<ICreatureFamily> {
+        try {
+            const response = await this.axios.get<ICreatureFamily>(encodeURI(`${this.gameBaseUrlPath}/creature-family/${creatureFamilyId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified creature family.`);
+        }
     }
 
     /**
      * Returns an index of creature types.
      */
-    async getCreatureTypesIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/creature-type/index`,
-            'Error fetching creature types index.'
-        );
+    async getCreatureTypesIndex(): Promise<ICreatureTypes> {
+        try {
+            const response = await this.axios.get<ICreatureTypes>(encodeURI(`${this.gameBaseUrlPath}/creature-type/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching creature types index.`);
+        }
     }
 
     /**
@@ -51,11 +98,19 @@ class WowClassicGameData {
      *
      * @param creatureTypeId The ID of the creature type.
      */
-    async getCreatureType(creatureTypeId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/creature-type/${creatureTypeId}`,
-            'Error fetching specified creature type.'
-        );
+    async getCreatureType(creatureTypeId: number): Promise<IDefaultStruct> {
+        try {
+            const response = await this.axios.get<IDefaultStruct>(encodeURI(`${this.gameBaseUrlPath}/creature-type/${creatureTypeId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified creature type.`);
+        }
     }
 
     /**
@@ -63,11 +118,19 @@ class WowClassicGameData {
      *
      * @param creatureId The ID of the creature.
      */
-    async getCreature(creatureId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/creature/${creatureId}`,
-            'Error fetching specified creature.'
-        );
+    async getCreature(creatureId: number): Promise<ICreature> {
+        try {
+            const response = await this.axios.get<ICreature>(encodeURI(`${this.gameBaseUrlPath}/creature/${creatureId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified creature.`);
+        }
     }
 
     /**
@@ -75,11 +138,19 @@ class WowClassicGameData {
      *
      * @param creatureDisplayId The ID of the creature display.
      */
-    async getCreatureDisplayMedia(creatureDisplayId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/media/creature-display/${creatureDisplayId}`,
-            'Error fetching specified creature display media.'
-        );
+    async getCreatureDisplayMedia(creatureDisplayId: number): Promise<ICreatureDisplayMedia> {
+        try {
+            const response = await this.axios.get<ICreatureDisplayMedia>(encodeURI(`${this.gameBaseUrlPath}/media/creature-display/${creatureDisplayId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified creature display media.`);
+        }
     }
 
     /**
@@ -87,11 +158,19 @@ class WowClassicGameData {
      *
      * @param creatureFamilyId The ID of the creature family.
      */
-    async getCreatureFamilyMedia(creatureFamilyId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/media/creature-family/${creatureFamilyId}`,
-            'Error fetching specified creature family media.'
-        );
+    async getCreatureFamilyMedia(creatureFamilyId: number): Promise<ICreatureFamilyMedia> {
+        try {
+            const response = await this.axios.get<ICreatureFamilyMedia>(encodeURI(`${this.gameBaseUrlPath}/media/creature-family/${creatureFamilyId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified creature family media.`);
+        }
     }
 
     /****************************
@@ -101,11 +180,19 @@ class WowClassicGameData {
     /**
      * Returns an index of guild crest media.
      */
-    async getGuildCrestComponentsIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/guild-crest/index`,
-            'Error fetching guild crest components index.'
-        );
+    async getGuildCrestComponentsIndex(): Promise<IGuildCrestComponents> {
+        try {
+            const response = await this.axios.get<IGuildCrestComponents>(encodeURI(`${this.gameBaseUrlPath}/guild-crest/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching guild crest components index.`);
+        }
     }
 
     /**
@@ -113,11 +200,19 @@ class WowClassicGameData {
      *
      * @param borderId The ID of the guild crest border.
      */
-    async getGuildCrestBorderMedia(borderId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/guild-crest/border/${borderId}`,
-            'Error fetching guild crest border media.'
-        );
+    async getGuildCrestBorderMedia(borderId: number): Promise<IGuildCrestBorderMedia> {
+        try {
+            const response = await this.axios.get<IGuildCrestBorderMedia>(encodeURI(`${this.gameBaseUrlPath}/guild-crest/border/${borderId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching guild crest border media.`);
+        }
     }
 
     /**
@@ -125,11 +220,19 @@ class WowClassicGameData {
      *
      * @param emblemId The ID of the guild crest emblem.
      */
-    async getGuildCrestEmblemMedia(emblemId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/guild-crest/emblem/${emblemId}`,
-            'Error fetching guild crest emblem media.'
-        );
+    async getGuildCrestEmblemMedia(emblemId: number): Promise<IGuildCrestEmblemMedia> {
+        try {
+            const response = await this.axios.get<IGuildCrestBorderMedia>(encodeURI(`${this.gameBaseUrlPath}/guild-crest/emblem/${emblemId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching guild crest emblem media.`);
+        }
     }
 
     /****************************
@@ -139,11 +242,19 @@ class WowClassicGameData {
     /**
      * Returns an index of item classes.
      */
-    async getItemClassesIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/item-class/index`,
-            'Error fetching item class index.'
-        );
+    async getItemClassesIndex(): Promise<IItemClasses> {
+        try {
+            const response = await this.axios.get<IItemClasses>(encodeURI(`${this.gameBaseUrlPath}/item-class/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching item class index.`);
+        }
     }
 
     /**
@@ -151,11 +262,19 @@ class WowClassicGameData {
      *
      * @param itemClassId The ID of the item class.
      */
-    async getItemClass(itemClassId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/item-class/${itemClassId}`,
-            'Error fetching specified item class.'
-        );
+    async getItemClass(itemClassId: string): Promise<IItemClass> {
+        try {
+            const response = await this.axios.get<IItemClass>(encodeURI(`${this.gameBaseUrlPath}/item-class/${itemClassId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified item class.`);
+        }
     }
 
     /**
@@ -164,11 +283,19 @@ class WowClassicGameData {
      * @param itemClassId The ID of the item class.
      * @param itemSubclassId The ID of the item subclass.
      */
-    async getItemSubclass(itemClassId: string, itemSubclassId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/item-class/${itemClassId}/item-subclass/${itemSubclassId}`,
-            'Error fetching specified item class subclass.'
-        );
+    async getItemSubclass(itemClassId: string, itemSubclassId: string): Promise<IItemSubclass> {
+        try {
+            const response = await this.axios.get<IItemSubclass>(encodeURI(`${this.gameBaseUrlPath}/item-class/${itemClassId}/item-subclass/${itemSubclassId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified item class subclass.`);
+        }
     }
 
     /**
@@ -176,11 +303,19 @@ class WowClassicGameData {
      *
      * @param itemId The ID of the item.
      */
-    async getItem(itemId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/item/${itemId}`,
-            'Error fetching specified item.'
-        );
+    async getItem(itemId: string): Promise<IItemSubclass> {
+        try {
+            const response = await this.axios.get<IItemSubclass>(encodeURI(`${this.gameBaseUrlPath}/item/${itemId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified item.`);
+        }
     }
 
     /**
@@ -188,11 +323,19 @@ class WowClassicGameData {
      *
      * @param itemId The ID of the item.
      */
-    async getItemMedia(itemId: string): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/media/item/${itemId}`,
-            'Error fetching specified item media.'
-        );
+    async getItemMedia(itemId: string): Promise<IItemMedia> {
+        try {
+            const response = await this.axios.get<IItemMedia>(encodeURI(`${this.gameBaseUrlPath}/media/item/${itemId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified item media.`);
+        }
     }
 
     /****************************
@@ -202,11 +345,19 @@ class WowClassicGameData {
     /**
      * Returns an index of playable classes.
      */
-    async getPlayableClassIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/playable-class/index`,
-            'Error fetching playable class index.'
-        );
+    async getPlayableClassIndex(): Promise<IPlayableClasses> {
+        try {
+            const response = await this.axios.get<IPlayableClasses>(encodeURI(`${this.gameBaseUrlPath}/playable-class/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching playable class index.`);
+        }
     }
 
     /**
@@ -214,11 +365,19 @@ class WowClassicGameData {
      *
      * @param playableClassId The ID of the playable class.
      */
-    async getPlayableClass(playableClassId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/playable-class/${playableClassId}`,
-            'Error fetching specified playable class.'
-        );
+    async getPlayableClass(playableClassId: number): Promise<IPlayableClass> {
+        try {
+            const response = await this.axios.get<IPlayableClass>(encodeURI(`${this.gameBaseUrlPath}/playable-class/${playableClassId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified playable class.`);
+        }
     }
 
     /**
@@ -226,11 +385,19 @@ class WowClassicGameData {
      *
      * @param playableClassId The ID of the playable class.
      */
-    async getPlayableClassMedia(playableClassId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/media/playable-class/${playableClassId}`,
-            'Error fetching specified playable class media.'
-        );
+    async getPlayableClassMedia(playableClassId: number): Promise<IPlayableClassMedia> {
+        try {
+            const response = await this.axios.get<IPlayableClass>(encodeURI(`${this.gameBaseUrlPath}/media/playable-class/${playableClassId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified playable class media.`);
+        }
     }
 
     /****************************
@@ -240,11 +407,19 @@ class WowClassicGameData {
     /**
      * Returns an index of playable races.
      */
-    async getPlayableRaceIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/playable-race/index`,
-            'Error fetching playable race index.'
-        );
+    async getPlayableRaceIndex(): Promise<IPlayableRaces> {
+        try {
+            const response = await this.axios.get<IPlayableRaces>(encodeURI(`${this.gameBaseUrlPath}/playable-race/index`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching playable race index.`);
+        }
     }
 
     /**
@@ -252,11 +427,19 @@ class WowClassicGameData {
      *
      * @param playableRaceId The ID of the playable race.
      */
-    async getPlayableRace(playableRaceId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/playable-race/${playableRaceId}`,
-            'Error fetching specified playable race.'
-        );
+    async getPlayableRace(playableRaceId: number): Promise<IPlayableRace> {
+        try {
+            const response = await this.axios.get<IPlayableRace>(encodeURI(`${this.gameBaseUrlPath}/playable-race/${playableRaceId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified playable race.`);
+        }
     }
 
     /****************************
@@ -266,32 +449,9 @@ class WowClassicGameData {
     /**
      * Returns an index of power types.
      */
-    async getPowerTypesIndex(): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/power-type/index`,
-            'Error fetching power type index.'
-        );
-    }
-
-    /**
-     * Returns a power type by ID.
-     *
-     * @param powerTypeId
-     */
-    async getPowerType(powerTypeId: number): Promise<object> {
-        return await this._handleApiCall(
-            `${this.gameBaseUrlPath}/power-type/${powerTypeId}`,
-            'Error fetching specified power type.'
-        );
-    }
-
-    /********************************
-     * Private Class Helper Functions
-     ********************************/
-
-    async _handleApiCall(apiUrl: string, errorMessage: string): Promise<object> {
+    async getPowerTypesIndex(): Promise<IPowerTypes> {
         try {
-            const response = await this.axios.get(encodeURI(apiUrl), {
+            const response = await this.axios.get<IPowerTypes>(encodeURI(`${this.gameBaseUrlPath}/power-type/index`), {
                 params: {
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
@@ -300,7 +460,27 @@ class WowClassicGameData {
             return response.data;
         } catch (error) {
             console.log(error);
-            throw new Error(`WoW Classic Game Data Error :: ${errorMessage}`);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching power type index.`);
+        }
+    }
+
+    /**
+     * Returns a power type by ID.
+     *
+     * @param powerTypeId
+     */
+    async getPowerType(powerTypeId: number): Promise<IPowerType> {
+        try {
+            const response = await this.axios.get<IPowerType>(encodeURI(`${this.gameBaseUrlPath}/power-type/${powerTypeId}`), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Classic Game Data Error :: Error fetching specified power type.`);
         }
     }
 }
