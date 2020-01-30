@@ -1,5 +1,7 @@
 # Battle.net API Wrapper
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/QuadDamn/battlenet-api-wrapper.svg)](https://greenkeeper.io/)
+
 A promised-based Node.js wrapper for the Battle.net Community and Data APIs (supports WoW, WoW Classic, SC2, D3, and Hearthstone).
 
 ## Installation
