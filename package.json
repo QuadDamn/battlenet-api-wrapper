@@ -10,7 +10,8 @@
     "watch:server": "nodemon './dist/battleNetWrapper.js' --watch './dist'",
     "start": "npm-run-all clean build --parallel watch:build watch:server --print-label",
     "codecov": "./node_modules/.bin/codecov",
-    "test": "./node_modules/.bin/jest"
+    "test": "./node_modules/.bin/jest",
+    "prettier": "./node_modules/.bin/prettier --print-width 80 --single-quote --trailing-comma es5 --write src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
     "typescript": "^3.7.4"
   },

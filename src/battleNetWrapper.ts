@@ -3,7 +3,6 @@ import axios, {AxiosInstance} from "axios";
 import Diablo3Community from './d3/community';
 import Diablo3GameData from './d3/gameData';
 import HearthstoneGameData from './hearthstone/gameData';
-import Starcraft2Community from './sc2/community';
 import Starcraft2GameData from './sc2/gameData';
 import WowProfileData from './wow/profileData';
 import WowGameData from './wow/gameData';
@@ -94,7 +93,6 @@ class BattleNetWrapper {
         this.Diablo3Community = new Diablo3Community(this.axios);
         this.Diablo3GameData = new Diablo3GameData(this.axios);
         this.HearthstoneGameData = new HearthstoneGameData(this.axios, this.defaultAxiosParams);
-        this.Starcraft2Community = new Starcraft2Community(this.axios);
         this.Starcraft2GameData = new Starcraft2GameData(this.axios);
         this.WowCommunity = new WowCommunity(this.axios, this.defaultAxiosParams);
         this.WowGameData = new WowGameData(this.axios, this.defaultAxiosParams, this.origin);
