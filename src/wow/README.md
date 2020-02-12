@@ -458,6 +458,16 @@ Returns media for an achievement by ID.
 -   `achievementId` **[number][312]** The ID of the achievement.  
   
 Returns **[Promise][310]&lt;[object][311]>**   
+
+### getAuctionHouse  
+  
+Returns all active auctions for a connected realm.
+  
+#### Parameters  
+  
+- `connectedRealmId` **[number][312]** The ID of the connected realm.  
+  
+Returns **[Promise][310]&lt;[object][311]>**   
   
 ### getAzeriteEssenceIndex  
   
