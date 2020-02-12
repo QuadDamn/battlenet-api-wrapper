@@ -7,11 +7,13 @@ In order to use these functions, you will need to have initialized the BattleNet
 const battleNetWrapper = require('battlenet-api-wrapper');  
   
 const clientId = 'YOUR_CLIENT_ID';  
-const clientSecret = 'YOUR_CLIENT_SECRET';  
+const clientSecret = 'YOUR_CLIENT_SECRET';
+const region = 'us';
+const locale = 'en_US';
   
 (async function() {  
    const bnw = new battleNetWrapper();  
-   await bnw.init(clientId, clientSecret);  
+   await bnw.init(clientId, clientSecret, region, locale);  
    const data = await bnw.WowCommunity.getBossMasterList();  
 }());  
 ```  
