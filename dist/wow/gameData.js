@@ -68,6 +68,19 @@ class WowGameData {
         });
     }
     /****************************
+     * Auction House API
+     ****************************/
+    /**
+     * Returns all active auctions for a connected realm.
+     *
+     * @param achievementId The ID of the achievement.
+     */
+    getAuctionHouse(connectedRealmId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.staticNamespace);
+        });
+    }
+    /****************************
      * Azerite Essence API
      ****************************/
     /**
