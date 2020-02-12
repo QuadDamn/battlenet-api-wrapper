@@ -80,6 +80,23 @@ class WowGameData {
             this.staticNamespace
         );
     }
+    
+    /****************************
+     * Auction House API
+     ****************************/
+
+    /**
+     * Returns all active auctions for a connected realm.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     */
+    async getAuctionHouse(connectedRealmId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`,
+            'Error fetching auction house data.',
+            this.staticNamespace
+        );
+    }
 
     /****************************
      * Azerite Essence API
