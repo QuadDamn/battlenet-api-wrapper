@@ -292,7 +292,7 @@ class WowProfileData {
      */
     async getGuildRoster(realmSlug: string, guildName: string): Promise<object> {
         return await this._handleApiCall(
-            `/data/wow/guild/${realmSlug}/${guildName}`,
+            `/data/wow/guild/${realmSlug}/${guildName}/roster`,
             'Error fetching guild roster.'
         );
     }
