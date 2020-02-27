@@ -997,7 +997,11 @@ class WowGameData {
                     namespace: namespace,
                     ...this.defaultAxiosParams
                 }});
-            return response.data;
+            if (apiUrl.includes("auctions")) {
+                return {auctions: response.data.auctions, lastModified: response.headers}
+            } else {
+                return response.data;
+            }
         } catch (error) {
             console.log(error);
             throw new Error(`WoW Game Data Error :: ${errorMessage}`);

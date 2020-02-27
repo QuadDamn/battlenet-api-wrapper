@@ -760,7 +760,12 @@ class WowGameData {
                 const response = yield this.axios.get(encodeURI(apiUrl), {
                     params: Object.assign({ namespace: namespace }, this.defaultAxiosParams)
                 });
-                return response.data;
+                if (apiUrl.includes("auctions")) {
+                    return { auctions: response.data.auctions, lastModified: response.headers };
+                }
+                else {
+                    return response.data;
+                }
             }
             catch (error) {
                 console.log(error);
