@@ -356,6 +356,7 @@ const clientSecret = 'YOUR_CLIENT_SECRET';
 -   [getAzeriteEssenceIndex][128]  
 -   [getAzeriteEssence][129]  
 -   [getAzeriteEssenceMedia][131]    
+-   [getAuctionHouse][132]  
 -   [getConnectedRealmsIndex][133]  
 -   [getConnectedRealm][134]  
 -   [getCreatureFamiliesIndex][136]  
