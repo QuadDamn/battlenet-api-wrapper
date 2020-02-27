@@ -62,10 +62,10 @@ class BattleNetWrapper {
                 throw new Error('You are missing your Client ID in the passed parameters. This parameter is required.');
             if (!clientSecret)
                 throw new Error('You are missing your Client Secret in the passed parameters. This parameter is required.');
-            this.clientId = clientId;
-            this.clientSecret = clientSecret;
             this.origin = origin;
             this.locale = locale;
+            this.clientId = clientId;
+            this.clientSecret = clientSecret;
             this.defaultAxiosParams = {
                 locale: this.locale
             };
@@ -76,7 +76,7 @@ class BattleNetWrapper {
                     baseURL: this.originObject[this.origin].hostname,
                     params: this.defaultAxiosParams
                 });
-                yield this._getToken();
+                yield this.setOAuthToken();
                 this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
             }
             catch (error) {
@@ -93,10 +93,10 @@ class BattleNetWrapper {
             this.WowClassicGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
         });
     }
-    // Gets a new access token for all of the subsequent API requests.
-    // Every invocation of this class will create a new access token,
+    // Sets a new access token for all of the subsequent API requests.
+    // Every invocation of this method will create a new access token,
     // so you should never have to worry about the token ever expiring.
-    _getToken() {
+    setOAuthToken() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const response = yield axios_1.default.get(`https://${this.origin}.battle.net/oauth/token`, {

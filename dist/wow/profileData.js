@@ -257,7 +257,7 @@ class WowProfileData {
      */
     getGuildRoster(realmSlug, guildName) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`/data/wow/guild/${realmSlug}/${guildName}`, 'Error fetching guild roster.');
+            return yield this._handleApiCall(`/data/wow/guild/${realmSlug}/${guildName}/roster`, 'Error fetching guild roster.');
         });
     }
     /********************************
