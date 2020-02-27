@@ -73,7 +73,7 @@ class WowGameData {
     /**
      * Returns all active auctions for a connected realm.
      *
-     * @param achievementId The ID of the achievement.
+     * @param connectedRealmId The ID of the connected realm.
      */
     getAuctionHouse(connectedRealmId) {
         return __awaiter(this, void 0, void 0, function* () {
