@@ -77,7 +77,7 @@ class WowGameData {
      */
     getAuctionHouse(connectedRealmId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.staticNamespace);
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.dynamicNamespace);
         });
     }
     /****************************

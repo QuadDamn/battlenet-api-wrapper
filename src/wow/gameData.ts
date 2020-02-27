@@ -94,7 +94,7 @@ class WowGameData {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`,
             'Error fetching auction house data.',
-            this.staticNamespace
+            this.dynamicNamespace
         );
     }
 
