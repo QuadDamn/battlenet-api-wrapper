@@ -761,7 +761,7 @@ class WowGameData {
                     params: Object.assign({ namespace: namespace }, this.defaultAxiosParams)
                 });
                 if (apiUrl.includes("auctions")) {
-                    return { auctions: response.data.auctions, lastModified: response.headers };
+                    return { auctions: response.data.auctions, lastModified: response.headers['last-modified'] };
                 }
                 else {
                     return response.data;
