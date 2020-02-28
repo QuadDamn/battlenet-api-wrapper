@@ -1017,8 +1017,9 @@ class WowGameData {
                 }
             }
         } catch (error) {
-            console.log(`WoW Game Data Error :: ${errorMessage}`);
-            return error
+            console.error(`WoW Game Data Error :: ${errorMessage}`);
+            console.log(error.statusCode)
+            //throw new Error(error)
         }
     }
 }
