@@ -74,10 +74,11 @@ class WowGameData {
      * Returns all active auctions for a connected realm.
      *
      * @param connectedRealmId The ID of the connected realm.
+     * @param header If-Modified-Since request HTTP header
      */
-    getAuctionHouse(connectedRealmId) {
+    getAuctionHouse(connectedRealmId, header) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.dynamicNamespace);
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.dynamicNamespace, header);
         });
     }
     /****************************
@@ -754,17 +755,26 @@ class WowGameData {
     /********************************
      * Private Class Helper Functions
      ********************************/
-    _handleApiCall(apiUrl, errorMessage, namespace) {
+    _handleApiCall(apiUrl, errorMessage, namespace, header = '') {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(encodeURI(apiUrl), {
-                    params: Object.assign({ namespace: namespace }, this.defaultAxiosParams)
-                });
-                if (apiUrl.includes("auctions")) {
-                    return { auctions: response.data.auctions, lastModified: response.headers['last-modified'] };
+                if (namespace.includes("static-")) {
+                    const response = yield this.axios.get(encodeURI(apiUrl), {
+                        params: Object.assign({ namespace: namespace }, this.defaultAxiosParams),
+                    });
+                    return response.data;
                 }
                 else {
-                    return response.data;
+                    const response = yield this.axios.get(encodeURI(apiUrl), {
+                        params: Object.assign({ namespace: namespace }, this.defaultAxiosParams),
+                        headers: { 'If-Modified-Since': header },
+                    });
+                    if (apiUrl.includes("auctions")) {
+                        return { auctions: response.data.auctions, lastModified: response.headers['last-modified'] };
+                    }
+                    else {
+                        return response.data;
+                    }
                 }
             }
             catch (error) {

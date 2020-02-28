@@ -89,12 +89,14 @@ class WowGameData {
      * Returns all active auctions for a connected realm.
      *
      * @param connectedRealmId The ID of the connected realm.
+     * @param header If-Modified-Since request HTTP header
      */
-    async getAuctionHouse(connectedRealmId: number): Promise<object> {
+    async getAuctionHouse(connectedRealmId: number, header: string): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`,
             'Error fetching auction house data.',
-            this.dynamicNamespace
+            this.dynamicNamespace,
+            header
         );
     }
 
@@ -990,17 +992,29 @@ class WowGameData {
      * Private Class Helper Functions
      ********************************/
 
-    async _handleApiCall(apiUrl: string, errorMessage: string, namespace: string): Promise<object> {
+    async _handleApiCall(apiUrl: string, errorMessage: string, namespace: string, header: string = ''): Promise<object> {
         try {
-            const response = await this.axios.get(encodeURI(apiUrl), {
-                params: {
-                    namespace: namespace,
-                    ...this.defaultAxiosParams
-                }});
-            if (apiUrl.includes("auctions")) {
-                return {auctions: response.data.auctions, lastModified: response.headers['last-modified']}
-            } else {
+            if (namespace.includes("static-")) {
+                const response = await this.axios.get(encodeURI(apiUrl), {
+                    params: {
+                        namespace: namespace,
+                        ...this.defaultAxiosParams
+                    },
+                });
                 return response.data;
+            } else {
+                const response = await this.axios.get(encodeURI(apiUrl), {
+                    params: {
+                        namespace: namespace,
+                        ...this.defaultAxiosParams
+                    },
+                    headers: {'If-Modified-Since': header},
+                });
+                if (apiUrl.includes("auctions")) {
+                    return {auctions: response.data.auctions, lastModified: response.headers['last-modified']}
+                } else {
+                    return response.data;
+                }
             }
         } catch (error) {
             console.log(error);
