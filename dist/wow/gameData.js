@@ -76,7 +76,7 @@ class WowGameData {
      * @param connectedRealmId The ID of the connected realm.
      * @param header If-Modified-Since request HTTP header
      */
-    getAuctionHouse(connectedRealmId, header) {
+    getAuctionHouse(connectedRealmId, header = '') {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, 'Error fetching auction house data.', this.dynamicNamespace, header);
         });
