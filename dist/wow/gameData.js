@@ -778,8 +778,8 @@ class WowGameData {
                 }
             }
             catch (error) {
-                console.log(error);
-                throw new Error(`WoW Game Data Error :: ${errorMessage}`);
+                console.log(`WoW Game Data Error :: ${errorMessage}`);
+                throw new Error(error);
             }
         });
     }
