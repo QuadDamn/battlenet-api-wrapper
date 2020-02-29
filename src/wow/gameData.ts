@@ -1017,11 +1017,11 @@ class WowGameData {
                 }
             }
         } catch (error) {
-            console.log(typeof error.response.status);
-            if (error.response.status == 304) {
-            } else if (error.response.status == 404) {
+            if (error.response.status === 304) {
 
-            } else if (error.response.status == 403) {
+            } else if (error.response.status === 404) {
+
+            } else if (error.response.status === 403) {
 
             } else {
                 console.error(error.response.statusText);
