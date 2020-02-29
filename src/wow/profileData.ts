@@ -311,7 +311,7 @@ class WowProfileData {
             return response.data;
         } catch (error) {
             if (error.response.status !== 304 || error.response.status !== 404 || error.response.status !== 403) console.log(error.response.statusText);
-            throw new Error(`WoW Game Data Error :: ${errorMessage}`);
+            throw new Error(`${errorMessage}`);
         }
     }
 }
