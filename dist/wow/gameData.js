@@ -778,12 +778,8 @@ class WowGameData {
                 }
             }
             catch (error) {
-                if (error.response.status === 304)
-                    return error.response.statusText;
-                if (error.response.status === 404)
-                    return error.response.statusText;
-                if (error.response.status === 403)
-                    return error.response.statusText;
+                if (error.response.status !== 304 || error.response.status !== 404 || error.response.status !== 403)
+                    console.log(error.response.statusText);
                 throw new Error(`WoW Game Data Error :: ${errorMessage}`);
             }
         });
