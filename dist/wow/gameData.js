@@ -778,7 +778,14 @@ class WowGameData {
                 }
             }
             catch (error) {
-                if (error.response.status != 304 || error.response.status != 404 || error.response.status != 403) {
+                console.log(typeof error.response.status);
+                if (error.response.status == 304) {
+                }
+                else if (error.response.status == 404) {
+                }
+                else if (error.response.status == 403) {
+                }
+                else {
                     console.error(error.response.statusText);
                 }
                 throw new Error(`${errorMessage}`);
