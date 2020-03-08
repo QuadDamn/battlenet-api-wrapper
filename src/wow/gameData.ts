@@ -94,7 +94,7 @@ class WowGameData {
     async getAuctionHouse(connectedRealmId: number, header: string = ''): Promise<object> {
         return await this._handleApiCall(
             `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`,
-            'Error fetching auction house data.',
+            `Error fetching auction house data from ${connectedRealmId}`,
             this.dynamicNamespace,
             header
         );
