@@ -773,6 +773,8 @@ class WowGameData {
                         return { auctions: response.data.auctions, lastModified: response.headers['last-modified'] };
                     }
                     else {
+                        if (response.headers['last-modified'])
+                            response.data.lastModified = response.headers['last-modified'];
                         return response.data;
                     }
                 }
