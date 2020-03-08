@@ -1010,12 +1010,8 @@ class WowGameData {
                     },
                     headers: {'If-Modified-Since': header},
                 });
-                if (apiUrl.includes("auctions")) {
-                    return {auctions: response.data.auctions, lastModified: response.headers['last-modified']}
-                } else {
-                    if (response.headers['last-modified']) response.data.lastModified = response.headers['last-modified'];
-                    return response.data;
-                }
+                if (response.headers['last-modified']) response.data.lastModified = response.headers['last-modified'];
+                return response.data;
             }
         } catch (error) {
             if (error.response.status === 304) {
