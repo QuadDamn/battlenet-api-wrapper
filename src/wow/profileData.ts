@@ -308,6 +308,7 @@ class WowProfileData {
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
                 }});
+            if (response.headers['last-modified']) response.data.lastModified = response.headers['last-modified'];
             return response.data;
         } catch (error) {
             if (error.response.status === 304) {

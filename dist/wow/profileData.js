@@ -269,6 +269,8 @@ class WowProfileData {
                 const response = yield this.axios.get(encodeURI(apiUrl), {
                     params: Object.assign({ namespace: this.namespace }, this.defaultAxiosParams)
                 });
+                if (response.headers['last-modified'])
+                    response.data.lastModified = response.headers['last-modified'];
                 return response.data;
             }
             catch (error) {
