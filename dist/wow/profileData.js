@@ -275,10 +275,13 @@ class WowProfileData {
             }
             catch (error) {
                 if (error.response.status === 304) {
+                    return error.response.status;
                 }
                 else if (error.response.status === 404) {
+                    return error.response.status;
                 }
                 else if (error.response.status === 403) {
+                    return error.response.status;
                 }
                 else {
                     console.error(error.response.statusText);
