@@ -769,6 +769,8 @@ class WowGameData {
                         params: Object.assign({ namespace: namespace }, this.defaultAxiosParams),
                         headers: { 'If-Modified-Since': header },
                     });
+                    if (response.data['statusCode'])
+                        response.data.statusCode = response.status;
                     if (response.headers['last-modified'])
                         response.data.lastModified = response.headers['last-modified'];
                     return response.data;
