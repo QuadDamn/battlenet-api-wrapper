@@ -285,6 +285,9 @@ class WowProfileData {
                 else if (error.response.status === 403) {
                     throw new Error(error.response.status);
                 }
+                else if (error.response.status === 500) {
+                    throw new Error(error.response.status);
+                }
                 else {
                     console.error(error.response.statusText);
                 }
