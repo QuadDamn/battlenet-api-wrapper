@@ -313,11 +313,11 @@ class WowProfileData {
             return response.data;
         } catch (error) {
             if (error.response.status === 304) {
-                return error.response.status
+                throw new Error(error.response.status);
             } else if (error.response.status === 404) {
-                return error.response.status
+                throw new Error(error.response.status);
             } else if (error.response.status === 403) {
-                return error.response.status
+                throw new Error(error.response.status);
             } else {
                 console.error(error.response.statusText);
             }
