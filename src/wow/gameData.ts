@@ -997,6 +997,7 @@ class WowGameData {
             if (namespace.includes("static-")) {
                 const response = await this.axios.get(encodeURI(apiUrl), {
                     params: {
+                        timeout: 10000,
                         namespace: namespace,
                         ...this.defaultAxiosParams
                     },
@@ -1005,6 +1006,7 @@ class WowGameData {
             } else {
                 const response = await this.axios.get(encodeURI(apiUrl), {
                     params: {
+                        timeout: 10000,
                         namespace: namespace,
                         ...this.defaultAxiosParams
                     },

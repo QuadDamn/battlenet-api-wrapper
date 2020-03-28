@@ -267,7 +267,7 @@ class WowProfileData {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const response = yield this.axios.get(encodeURI(apiUrl), {
-                    params: Object.assign({ namespace: this.namespace }, this.defaultAxiosParams)
+                    params: Object.assign({ timeout: 10000, namespace: this.namespace }, this.defaultAxiosParams)
                 });
                 if (response.status)
                     response.data.statusCode = response.status;

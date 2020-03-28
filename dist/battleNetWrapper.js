@@ -61,7 +61,8 @@ class BattleNetWrapper {
             this.origin = origin;
             this.locale = locale;
             this.defaultAxiosParams = {
-                locale: this.locale
+                locale: this.locale,
+                timeout: 10000
             };
             if (!providedToken) {
                 if (!clientId)
