@@ -305,7 +305,6 @@ class WowProfileData {
         try {
             const response = await this.axios.get(encodeURI(apiUrl), {
                 params: {
-                    timeout: 10000,
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
                 }});

@@ -760,7 +760,7 @@ class WowGameData {
             try {
                 if (namespace.includes("static-")) {
                     const response = yield this.axios.get(encodeURI(apiUrl), {
-                        params: Object.assign({ timeout: 10000, namespace: namespace }, this.defaultAxiosParams),
+                        params: Object.assign({ namespace: namespace }, this.defaultAxiosParams),
                     });
                     return response.data;
                 }
