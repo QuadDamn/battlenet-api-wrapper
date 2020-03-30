@@ -82,6 +82,7 @@ class BattleNetWrapper {
         try {
             this.axios = axios.create({
                 baseURL: this.originObject[this.origin].hostname,
+                timeout: 10000,
                 params: this.defaultAxiosParams
             });
 
