@@ -15,6 +15,95 @@ class WowProfileData {
     }
 
     /**
+     * Returns a profile summary for an account.
+     *
+     * Because this endpoint provides data about the current logged-in user's World of Warcraft account,
+     *  it requires an access token with the wow.profile scope acquired via the Authorization Code Flow.
+     *`
+     * @param accessToken The access token of the user requesting the profile information
+     *
+     */
+    async getAccountProfile(accessToken: string) : Promise<object> {
+        return await this._handleAccessTokenApiCall(
+            `/profile/user/wow`,
+            'Error fetching account summary.',
+            accessToken
+        );
+    }
+
+    /**
+     * Returns a protected profile summary for a character.
+     *
+     * Because this endpoint provides data about the current logged-in user's World of Warcraft account,
+     *  it requires an access token with the wow.profile scope acquired via the Authorization Code Flow.
+     *`
+     * @param realmId The ID of the character's realm.
+     * @param characterId The ID of the character.
+     * @param accessToken The access token of the user requesting the profile information
+     *
+     */
+    async getProtectedCharacterSummary(realmId: number, characterId: number, accessToken: string) : Promise<object> {
+        return await this._handleAccessTokenApiCall(
+            `/profile/user/wow/protected-character/${realmId}-${characterId}`,
+            'Error fetching protected character summary.',
+            accessToken
+        );
+    }
+
+    /**
+     * Returns an index of collection types for an account.
+     *
+     * Because this endpoint provides data about the current logged-in user's World of Warcraft account,
+     *  it requires an access token with the wow.profile scope acquired via the Authorization Code Flow.
+     *
+     * @param accessToken The access token of the user requesting the profile information
+     *
+     */
+    async getAccountCollectionsIndex(accessToken: string) : Promise<object> {
+        return await this._handleAccessTokenApiCall(
+            `/profile/user/wow/collections`,
+            'Error fetching account collections.',
+            accessToken
+        );
+    }
+
+    /**
+     *
+     * Returns a summary of the mounts an account has obtained.
+     *
+     * Because this endpoint provides data about the current logged-in user's World of Warcraft account,
+     *  it requires an access token with the wow.profile scope acquired via the Authorization Code Flow.
+     *
+     * @param accessToken The access token of the user requesting the profile information
+     *
+     */
+    async getAccountMountsCollectionSummary(accessToken: string) : Promise<object> {
+        return await this._handleAccessTokenApiCall(
+            `/profile/user/wow/collections/mounts`,
+            'Error fetching account mount collections.',
+            accessToken
+        );
+    }
+
+        /**
+     *
+     * Returns a summary of the battle pets an account has obtained.
+     *
+     * Because this endpoint provides data about the current logged-in user's World of Warcraft account,
+     *  it requires an access token with the wow.profile scope acquired via the Authorization Code Flow.
+     *
+     * @param accessToken The access token of the user requesting the profile information
+     *
+     */
+    async getAccountPetsCollectionSummary(accessToken: string) : Promise<object> {
+        return await this._handleAccessTokenApiCall(
+            `/profile/user/wow/collections/pets`,
+            'Error fetching account mount collections.',
+            accessToken
+        );
+    }
+
+    /**
      * Returns a summary of the achievements a character has completed.
      *
      * @param realmSlug The slug of the realm.
@@ -307,6 +396,23 @@ class WowProfileData {
                 params: {
                     namespace: this.namespace,
                     ...this.defaultAxiosParams
+                }});
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`WoW Profile Error :: ${errorMessage}`);
+        }
+    }
+
+    async _handleAccessTokenApiCall(apiUrl: string, errorMessage: string, accessToken: string) : Promise<object> {
+        try {
+            const response = await this.axios.get(encodeURI(apiUrl), {
+                params: {
+                    namespace: this.namespace,
+                    ...this.defaultAxiosParams
+                },
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
                 }});
             return response.data;
         } catch (error) {
