@@ -777,16 +777,7 @@ class WowGameData {
                 }
             }
             catch (error) {
-                if (error.response.status === 304) {
-                    throw new Error(error.response.status);
-                }
-                else if (error.response.status === 404) {
-                    throw new Error(error.response.status);
-                }
-                else if (error.response.status === 403) {
-                    throw new Error(error.response.status);
-                }
-                else if (error.response.status === 500) {
+                if (~[304, 404, 403, 500].indexOf(error.response.status)) {
                     throw new Error(error.response.status);
                 }
                 else {
