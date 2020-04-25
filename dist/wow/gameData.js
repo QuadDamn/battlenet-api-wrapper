@@ -557,6 +557,57 @@ class WowGameData {
         });
     }
     /****************************
+     * Professions API
+     ****************************/
+    /**
+     * Returns an index of professions.
+     */
+    getProfessionsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/index`, 'Error fetching professions index.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a profession by ID
+     */
+    getProfession(professionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/${professionId}`, 'Error fetching professions.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns media for a profession by ID.
+     */
+    getProfessionMedia(professionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/profession/${professionId}`, 'Error fetching specified profession media.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a skill tier for a profession by ID.
+     */
+    getProfessionSkillTier(professionId, skillTierId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/${professionId}/skill-tier/${skillTierId}`, 'Error fetching skill tier profession.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a recipe by ID.
+     */
+    getRecipe(recipeId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/recipe/${recipeId} `, 'Error fetching recipe by ID.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns media for a recipe by ID.
+     */
+    getRecipeMedia(recipeId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/recipe/${recipeId}`, 'Error fetching recipe media by ID.', this.staticNamespace);
+        });
+    }
+    /****************************
      * PvP Season API
      ****************************/
     /**
