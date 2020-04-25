@@ -80,6 +80,25 @@ class WowGameData {
             this.staticNamespace
         );
     }
+    
+    /****************************
+     * Auction House API
+     ****************************/
+
+    /**
+     * Returns all active auctions for a connected realm.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     * @param header If-Modified-Since request HTTP header
+     */
+    async getAuctionHouse(connectedRealmId: number, header: string = ''): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`,
+            `Error fetching auction house data from ${connectedRealmId}`,
+            this.dynamicNamespace,
+            header
+        );
+    }
 
     /****************************
      * Azerite Essence API
@@ -710,6 +729,76 @@ class WowGameData {
     }
 
     /****************************
+     * Professions API
+     ****************************/
+
+    /**
+     * Returns an index of professions.
+     */
+    async getProfessionsIndex(): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/profession/index`,
+            'Error fetching professions index.',
+            this.staticNamespace
+        );
+    }
+
+    /**
+     * Returns a profession by ID
+     */
+    async getProfession(professionId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/profession/${professionId}`,
+            'Error fetching professions.',
+            this.staticNamespace
+        );
+    }
+
+    /**
+     * Returns media for a profession by ID.
+     */
+    async getProfessionMedia (professionId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/profession/${professionId}`,
+            'Error fetching specified profession media.',
+            this.staticNamespace
+        );
+    }
+
+    /**
+     * Returns a skill tier for a profession by ID.
+     */
+    async getProfessionSkillTier (professionId: number, skillTierId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/profession/${professionId}/skill-tier/${skillTierId}`,
+            'Error fetching skill tier profession.',
+            this.staticNamespace
+        );
+    }
+
+    /**
+     * Returns a recipe by ID.
+     */
+    async getRecipe (recipeId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/recipe/${recipeId} `,
+            'Error fetching recipe by ID.',
+            this.staticNamespace
+        );
+    }
+
+    /**
+     * Returns media for a recipe by ID.
+     */
+    async getRecipeMedia  (recipeId: number): Promise<object> {
+        return await this._handleApiCall(
+            `${this.gameBaseUrlPath}/media/recipe/${recipeId}`,
+            'Error fetching recipe media by ID.',
+            this.staticNamespace
+        );
+    }
+
+    /****************************
      * PvP Season API
      ****************************/
 
@@ -973,17 +1062,36 @@ class WowGameData {
      * Private Class Helper Functions
      ********************************/
 
-    async _handleApiCall(apiUrl: string, errorMessage: string, namespace: string): Promise<object> {
+    async _handleApiCall(apiUrl: string, errorMessage: string, namespace: string, header: string = ''): Promise<object> {
         try {
-            const response = await this.axios.get(encodeURI(apiUrl), {
-                params: {
-                    namespace: namespace,
-                    ...this.defaultAxiosParams
-                }});
-            return response.data;
+            if (namespace.includes("static-")) {
+                const response = await this.axios.get(encodeURI(apiUrl), {
+                    params: {
+                        namespace: namespace,
+                        ...this.defaultAxiosParams
+                    },
+                });
+                return response.data;
+            } else {
+                const response = await this.axios.get(encodeURI(apiUrl), {
+                    params: {
+                        timeout: 10000,
+                        namespace: namespace,
+                        ...this.defaultAxiosParams
+                    },
+                    headers: {'If-Modified-Since': header},
+                });
+                if (response.status) response.data.statusCode = response.status;
+                if (response.headers['last-modified']) response.data.lastModified = response.headers['last-modified'];
+                return response.data;
+            }
         } catch (error) {
-            console.log(error);
-            throw new Error(`WoW Game Data Error :: ${errorMessage}`);
+            if (~[304, 404, 403, 500].indexOf(error.response.status)) {
+                throw new Error(error.response.status);
+            } else {
+                console.error(error.response.statusText);
+            }
+            throw new Error(`${errorMessage}`);
         }
     }
 }

@@ -269,11 +269,20 @@ class WowProfileData {
                 const response = yield this.axios.get(encodeURI(apiUrl), {
                     params: Object.assign({ namespace: this.namespace }, this.defaultAxiosParams)
                 });
+                if (response.status)
+                    response.data.statusCode = response.status;
+                if (response.headers['last-modified'])
+                    response.data.lastModified = response.headers['last-modified'];
                 return response.data;
             }
             catch (error) {
-                console.log(error);
-                throw new Error(`WoW Profile Error :: ${errorMessage}`);
+                if (~[304, 404, 403, 500].indexOf(error.response.status)) {
+                    throw new Error(error.response.status);
+                }
+                else {
+                    console.error(error.response.statusText);
+                }
+                throw new Error(`${errorMessage}`);
             }
         });
     }

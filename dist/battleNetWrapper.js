@@ -56,28 +56,36 @@ class BattleNetWrapper {
             }
         };
     }
-    init(clientId, clientSecret, origin = 'us', locale = 'en_US') {
+    init(clientId, clientSecret, providedToken, origin = 'us', locale = 'en_US') {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!clientId)
-                throw new Error('You are missing your Client ID in the passed parameters. This parameter is required.');
-            if (!clientSecret)
-                throw new Error('You are missing your Client Secret in the passed parameters. This parameter is required.');
             this.origin = origin;
             this.locale = locale;
-            this.clientId = clientId;
-            this.clientSecret = clientSecret;
             this.defaultAxiosParams = {
-                locale: this.locale
+                locale: this.locale,
             };
+            if (!providedToken) {
+                if (!clientId)
+                    throw new Error('You are missing your Client ID in the passed parameters. This parameter is required.');
+                if (!clientSecret)
+                    throw new Error('You are missing your Client Secret in the passed parameters. This parameter is required.');
+                this.clientId = clientId;
+                this.clientSecret = clientSecret;
+            }
             // Handles the fetching of a new OAuth token from the Battle.net API
             // and then creates a reusable instance of axios for all subsequent API requests.
             try {
                 this.axios = axios_1.default.create({
                     baseURL: this.originObject[this.origin].hostname,
+                    timeout: 10000,
                     params: this.defaultAxiosParams
                 });
-                yield this.setOAuthToken();
-                this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
+                if (providedToken) {
+                    this.axios.defaults.headers.common['Authorization'] = `Bearer ${providedToken}`;
+                }
+                else {
+                    yield this.getToken();
+                    this.axios.defaults.headers.common['Authorization'] = `Bearer ${this.oauthToken}`;
+                }
             }
             catch (error) {
                 console.log(error);
@@ -93,16 +101,16 @@ class BattleNetWrapper {
             this.WowClassicGameData = new gameData_5.default(this.axios, this.defaultAxiosParams, this.origin);
         });
     }
-    // Sets a new access token for all of the subsequent API requests.
-    // Every invocation of this method will create a new access token,
+    // Gets a new access token for all of the subsequent API requests.
+    // Every invocation of this class will create a new access token,
     // so you should never have to worry about the token ever expiring.
-    setOAuthToken() {
+    getToken(clientId, clientSecret, origin) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield axios_1.default.get(`https://${this.origin}.battle.net/oauth/token`, {
+                const response = yield axios_1.default.get(`https://${(origin) ? origin : this.origin}.battle.net/oauth/token`, {
                     auth: {
-                        username: this.clientId,
-                        password: this.clientSecret,
+                        username: (clientId) ? clientId : this.clientId,
+                        password: (clientSecret) ? clientSecret : this.clientSecret,
                     },
                     params: {
                         grant_type: 'client_credentials',

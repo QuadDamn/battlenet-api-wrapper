@@ -68,6 +68,20 @@ class WowGameData {
         });
     }
     /****************************
+     * Auction House API
+     ****************************/
+    /**
+     * Returns all active auctions for a connected realm.
+     *
+     * @param connectedRealmId The ID of the connected realm.
+     * @param header If-Modified-Since request HTTP header
+     */
+    getAuctionHouse(connectedRealmId, header = '') {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/connected-realm/${connectedRealmId}/auctions`, `Error fetching auction house data from ${connectedRealmId}`, this.dynamicNamespace, header);
+        });
+    }
+    /****************************
      * Azerite Essence API
      ****************************/
     /**
@@ -543,6 +557,57 @@ class WowGameData {
         });
     }
     /****************************
+     * Professions API
+     ****************************/
+    /**
+     * Returns an index of professions.
+     */
+    getProfessionsIndex() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/index`, 'Error fetching professions index.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a profession by ID
+     */
+    getProfession(professionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/${professionId}`, 'Error fetching professions.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns media for a profession by ID.
+     */
+    getProfessionMedia(professionId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/profession/${professionId}`, 'Error fetching specified profession media.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a skill tier for a profession by ID.
+     */
+    getProfessionSkillTier(professionId, skillTierId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/profession/${professionId}/skill-tier/${skillTierId}`, 'Error fetching skill tier profession.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns a recipe by ID.
+     */
+    getRecipe(recipeId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/recipe/${recipeId} `, 'Error fetching recipe by ID.', this.staticNamespace);
+        });
+    }
+    /**
+     * Returns media for a recipe by ID.
+     */
+    getRecipeMedia(recipeId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._handleApiCall(`${this.gameBaseUrlPath}/media/recipe/${recipeId}`, 'Error fetching recipe media by ID.', this.staticNamespace);
+        });
+    }
+    /****************************
      * PvP Season API
      ****************************/
     /**
@@ -741,17 +806,35 @@ class WowGameData {
     /********************************
      * Private Class Helper Functions
      ********************************/
-    _handleApiCall(apiUrl, errorMessage, namespace) {
+    _handleApiCall(apiUrl, errorMessage, namespace, header = '') {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield this.axios.get(encodeURI(apiUrl), {
-                    params: Object.assign({ namespace: namespace }, this.defaultAxiosParams)
-                });
-                return response.data;
+                if (namespace.includes("static-")) {
+                    const response = yield this.axios.get(encodeURI(apiUrl), {
+                        params: Object.assign({ namespace: namespace }, this.defaultAxiosParams),
+                    });
+                    return response.data;
+                }
+                else {
+                    const response = yield this.axios.get(encodeURI(apiUrl), {
+                        params: Object.assign({ timeout: 10000, namespace: namespace }, this.defaultAxiosParams),
+                        headers: { 'If-Modified-Since': header },
+                    });
+                    if (response.status)
+                        response.data.statusCode = response.status;
+                    if (response.headers['last-modified'])
+                        response.data.lastModified = response.headers['last-modified'];
+                    return response.data;
+                }
             }
             catch (error) {
-                console.log(error);
-                throw new Error(`WoW Game Data Error :: ${errorMessage}`);
+                if (~[304, 404, 403, 500].indexOf(error.response.status)) {
+                    throw new Error(error.response.status);
+                }
+                else {
+                    console.error(error.response.statusText);
+                }
+                throw new Error(`${errorMessage}`);
             }
         });
     }
