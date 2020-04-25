@@ -470,12 +470,13 @@ Returns **[Promise][310]&lt;[object][311]>**
 
 ### getAuctionHouse  
   
-Returns all active auctions for a connected realm.
+Returns all active auctions for a connected realm. If header (*optional*, format: `ddd, DD MMM YYYY HH:mm:ss GMT`) is used, returns all auctions since lastModified date.
   
 #### Parameters  
   
 - `connectedRealmId` **[number][312]** The ID of the connected realm.  
-  
+- `header` **[string][313]** (optional) If-Modified-Since request HTTP header
+
 Returns **[Promise][310]&lt;[object][311]>**   
   
 ### getAzeriteEssenceIndex  
