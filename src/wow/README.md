@@ -356,7 +356,7 @@ const clientSecret = 'YOUR_CLIENT_SECRET';
 -   [getAzeriteEssenceIndex][128]  
 -   [getAzeriteEssence][129]  
 -   [getAzeriteEssenceMedia][131]    
--   [getAuctionHouse][132]  
+-   [getAuctionHouse][316]  
 -   [getConnectedRealmsIndex][133]  
 -   [getConnectedRealm][134]  
 -   [getCreatureFamiliesIndex][136]  
@@ -400,6 +400,12 @@ const clientSecret = 'YOUR_CLIENT_SECRET';
 -   [getPlayableSpecialization][198]  
 -   [getPowerTypesIndex][200]  
 -   [getPowerType][201]  
+-   [getProfessionIndex][315]  
+-   [getProfession][317]  
+-   [getProfessionMedia][318]  
+-   [getProfessionSkillTier][319]  
+-   [getRecipe][320]  
+-   [getRecipeMedia][321]  
 -   [getPvpSeasonsIndex][203]  
 -   [getPvpSeason][204]  
 -   [getPvpLeaderboardsIndex][206]  
@@ -867,6 +873,63 @@ Returns a power type by ID.
 -   `powerTypeId` **[number][312]**   
   
 Returns **[Promise][310]&lt;[object][311]>**   
+ 
+### getProfessionIndex  
+  
+Returns an index of professions.
+  
+Returns **[Promise][310]&lt;[object][311]>**
+
+### getProfession  
+  
+Returns a profession by ID.
+  
+#### Parameters  
+  
+-   `professionId` **[number][312]** The ID of the profession.
+  
+Returns **[Promise][310]&lt;[object][311]>**
+
+### getProfessionMedia
+  
+Returns media for a profession by ID.
+  
+#### Parameters  
+  
+-   `professionId` **[number][312]** The ID of the profession.
+  
+Returns **[Promise][310]&lt;[object][311]>**
+
+### getProfessionSkillTier 
+  
+Returns a skill tier for a profession by ID.
+  
+#### Parameters  
+  
+-   `professionId` **[number][312]** The ID of the profession.
+-   `skillTierId` **[number][312]** The ID of the skill tier.
+  
+Returns **[Promise][310]&lt;[object][311]>**  
+
+### getRecipe
+  
+Returns a recipe by ID.
+  
+#### Parameters  
+  
+-   `recipeId` **[number][312]** The ID of the recipe.
+  
+Returns **[Promise][310]&lt;[object][311]>**  
+
+### getRecipeMedia
+  
+Returns media for a recipe by ID.
+  
+#### Parameters  
+  
+-   `recipeId` **[number][312]** The ID of the recipe.
+  
+Returns **[Promise][310]&lt;[object][311]>**
   
 ### getPvpSeasonsIndex  
   
@@ -1697,3 +1760,17 @@ Returns **[Promise][310]&lt;[object][311]>**
 [312]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number  
   
 [313]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[315]: #getprofessionindex
+
+[316]: #getauctionhouse
+
+[317]: #getprofession
+
+[318]: #getprofessionmedia
+
+[319]: #getprofessionskilltier
+
+[320]: #getrecipe
+
+[321]: #getrecipemedia
