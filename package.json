@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/node": "^13.1.1",
     "codecov": "^3.6.1",
-    "documentation": "^12.1.4",
+    "documentation": "^13.2.1",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.0",
